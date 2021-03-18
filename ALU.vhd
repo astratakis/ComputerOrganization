@@ -4,7 +4,7 @@
 -- Engineer:    Georgios Frangias
 -- 
 -- Create Date:     16/03/2021 
--- Module Name:    ALU_tb - behavior 
+-- Module Name:    ALU - Behavioral 
 -- Project Name:    HPY302_LAB
 -- Description: 
 --
@@ -15,212 +15,110 @@
 -- Additional Comments: 
 --
 ----------------------------------------------------------------------------------
-LIBRARY ieee;
-USE ieee.std_logic_1164.ALL;
- 
-ENTITY ALU_tb IS
-END ALU_tb;
- 
-ARCHITECTURE behavior OF ALU_tb IS 
- 
-    -- Component Declaration for the Unit Under Test (UUT)
- 
-    COMPONENT ALU
-    PORT(
-         A : IN  std_logic_vector(31 downto 0);
-         B : IN  std_logic_vector(31 downto 0);
-         Op : IN  std_logic_vector(3 downto 0);
-			Clock : IN std_logic;
-         Output : OUT  std_logic_vector(31 downto 0);
-         Zero : OUT  std_logic;
-         Cout : OUT  std_logic;
-         Ovf : OUT  std_logic
-			--Out33: OUT std_logic_vector(32 downto 0)
-        );
-    END COMPONENT;
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+use ieee.std_logic_unsigned.all;
+
+
+entity ALU is
+    port(
+
+    --Inputs
+    A: in std_logic_vector(31 downto 0);    --first operand
+    B: in std_logic_vector(31 downto 0);    --second operand
+    Op: in std_logic_vector(3 downto 0);    --operator
+	 Clock: in std_logic; 
+	 
+    --Outputs
+    Output: out std_logic_vector(31 downto 0); --output result
+	 --Out33: out std_logic_vector(32 downto 0);
+    Zero: out std_logic;                    --if output = 0
+    Cout: out std_logic;                    --if there is carry out
+    Ovf: out std_logic	                    --if there is overflow
+	 );
     
+end ALU;
 
-   --Inputs
-   signal A : std_logic_vector(31 downto 0) := (others => '0');
-   signal B : std_logic_vector(31 downto 0) := (others => '0');
-   signal Op : std_logic_vector(3 downto 0) := (others => '0');
+architecture Behavioral of ALU is
 
- 	--Outputs
-   signal Output : std_logic_vector(31 downto 0);
-   signal Zero : std_logic;
-   signal Cout : std_logic;
-   signal Ovf : std_logic;
-	--signal Out33: std_logic_vector(32 downto 0);
-   -- No clocks detected in port list. Replace <clock> below with 
-   -- appropriate port name	
-	signal Clock : std_logic := '0';
- 
-BEGIN
-	Clock <= not Clock after 100ns;
- 
-	-- Instantiate the Unit Under Test (UUT)
-   uut: ALU PORT MAP (
-          A => A,
-          B => B,
-          Op => Op,
-          Output => Output,
-          Zero => Zero,
-          Cout => Cout,
-          Ovf => Ovf,
-			 Clock => Clock
-			 --Out33 => Out33
-        );
+    --Temporary signals for output
+    signal tOutput: std_logic_vector(31 downto 0); --signal for the output
+    signal tOvf: std_logic;                         --signal to store Ovf variable
+	 signal tmp33: std_logic_vector(32 downto 0);   --signal for the output in 33 bits to calculate Cout
+begin
 
- 
+    process
+		variable OvfCheck: std_logic_vector(31 downto 0) := x"00000000";    --variable used to check if there is an Ovf
+    begin
+			wait until clock' event and clock = '1';
+			
+        if Op = "0000" then
+            tOutput <= A + B;   --addition
+				OvfCheck := std_logic_vector(unsigned(a) + unsigned(b));
+            tmp33 <= std_logic_vector(unsigned('0' & A) + unsigned('0' & B));
+				
+            if (A(31)=B(31) and OvfCheck(31)/=A(31)) then   --if A and B have the same sign and the result has the opposite
+                tOvf <= '1';
+            else
+                tOvf <= '0';
+            end if;
+				
+        elsif Op = "0001" then
+            tOutput <= A - B;   --subtraction
+				OvfCheck := std_logic_vector(unsigned(a) - unsigned(b));
+            tmp33 <= std_logic_vector(unsigned('0' & A) - unsigned('0' & B));
+				
+            if (A(31)/=B(31) and OvfCheck(31)=B(31)) then   --if A and B have opposite signs and the result has the same as the subtrahend
+                tOvf <= '1';
+            else
+                tOvf <= '0';
+            end if;
 
-   -- Stimulus process
-   stim_proc: process
-   begin		
+        elsif Op = "0010" then
+            tOutput <= A and B;   --logic AND
+				tOvf <= '0';
+				tmp33(32) <= '0';
+        elsif Op = "0011" then
+            tOutput <= A or B;   --logic OR
+            tOvf <= '0';
+				tmp33(32) <= '0';
+        elsif Op = "0100" then
+            tOutput <= not A;     --inversion (NOT)
+            tOvf <= '0';
+				tmp33(32) <= '0';
+        elsif Op = "0110" then
+            tOutput <= A nand B;  --logic NAND
+            tOvf <= '0';
+				tmp33(32) <= '0';
+        elsif Op = "1000" then
+            tOutput <= A(31) & A(31 downto 1);  --arithmetic shift right
+            tOvf <= '0';
+				tmp33(32) <= '0';
+        elsif Op = "1001" then
+            tOutput <= std_logic_vector(unsigned(A) srl 1);    --logic shift right
+            tOvf <= '0';
+				tmp33(32) <= '0';
+        elsif Op = "1010" then
+            tOutput <= std_logic_vector(unsigned(A) sll 1);    --logic shift left
+            tOvf <= '0';
+				tmp33(32) <= '0';
+        elsif Op = "1100" then
+            tOutput <= std_logic_vector(unsigned(A) rol 1);    --circular shift left
+            tOvf <= '0';
+				tmp33(32) <= '0';
+        elsif Op = "1101" then
+            tOutput <= std_logic_vector(unsigned(A) ror 1);	 --circular shift right
+            tOvf <= '0';
+				tmp33(32) <= '0';
+        end if;
+	end process;
+	
+	Output <= tOutput after 10ns;
+	Zero <= '1' after 10ns when tOutput = x"00000000" else '0' after 10ns; --if the result is 0 Zero='0'
+	Cout <= tmp33(32) after 10ns;   --check if there is carry out in the 33rd bit
+	Ovf <= tOvf after 10ns;
+	--Out33 <= tmp33 after 10ns;
+	
+	end Behavioral;
 
-		--------------
-		--Addition
-		--------------
-		
-		--- -1 (+) 1 Zero='1'
-		A <= x"ffffffff";
-		B <= x"00000001";
-		Op <= "0000";
-      wait for 200 ns;	
-		
-		--- -1258291200 (+) 989855744 Cout='0' and Ovf='0'
-		A <= x"b5000000";
-		B <= x"3b000000";
-		Op <= "0000";
-      wait for 200 ns;	
-
-		--- -318767104 (+) -117440512 Cout='1' and Ovf='0'
-		A <= x"ed000000";
-		B <= x"f9000000";
-		Op <= "0000";
-      wait for 200 ns;		
-		
-		--- 1744830464 (+) 754974720 Cout ='0' and Ovf='1'
-		A <= x"68000000";
-		B <= x"2d000000";
-		Op <= "0000";
-      wait for 200 ns;
-		
-		--- -1728053248 (+) -1157627904 Cout ='1' and Ovf='1'
-		A <= x"99000000";
-		B <= x"bb000000";
-		Op <= "0000";
-		wait for 200 ns;
-		
-		--------------
-		--Subtraction
-		--------------
-		
-		--- 1 (-) 1 Zero='1'
-		A <= x"00000001";
-		B <= x"00000001";
-		Op <= "0001";
-      wait for 200 ns;	
-		
-		--- 10 (-) 5 Cout='0' and Ovf='0'
-		A <= x"0000000a";
-		B <= x"00000005";
-		Op <= "0001";
-      wait for 200 ns;	
-		
-		--- -318767104 (-) 117440512 Cout='1' and Ovf='0'
-		A <= x"a0000000";
-		B <= x"f0000000";
-		Op <= "0001";
-      wait for 200 ns;
-		
-		--- -1728053248 (-) 1157627904 Cout ='0' and Ovf='1'
-		A <= x"99000000";
-		B <= x"45000000";
-		Op <= "0001";
-		wait for 200 ns;
-
-		--- 1744830464 (-) -754974720 Cout ='1' and Ovf='1'
-		A <= x"68000000";
-		B <= x"d3000000";
-		Op <= "0001";
-      wait for 200 ns;
-		
-		--------------
-		--Logic AND
-		--------------
-		
-		A <= x"48a5b5cd";
-		B <= x"1a8510d7";
-		Op <= "0010";
-      wait for 200 ns;
-		
-		--------------
-		--Logic OR
-		--------------
-		
-		A <= x"48a5b5cd";
-		B <= x"1a8510d7";
-		Op <= "0011";
-      wait for 200 ns;
-		
-		--------------
-		--Invarsion
-		--------------
-
-		A <= x"48a5b5cd";
-		Op <= "0100";
-      wait for 200 ns;
-		
-		--------------
-		--Logic NAND
-		--------------
-
-		A <= x"48a5b5cd";
-		B <= x"1a8510d7";
-		Op <= "0110";
-      wait for 200 ns;
-
-	  	--------------------------
-		--Arithmetic shift right
-		--------------------------
-		
-		A <= x"48a5b5cd";
-		Op <= "1000";
-      wait for 200 ns;
-
-	  	---------------------
-		--Logic shift right
-		---------------------
-
-		A <= x"48a5b5cd";
-		Op <= "1001";
-      wait for 200 ns;
-
-	  	--------------------
-		--Logic shift left
-		--------------------
-
-		A <= x"48a5b5cd";
-		Op <= "1010";
-      wait for 200 ns;
-
-	  	----------------------
-		--Circular shift left
-		----------------------
-
-		A <= x"48a5b5cd";
-		Op <= "1100";
-      wait for 200 ns;	  
-
-	  	-----------------------
-		--Circular shift right
-		-----------------------
-
-		A <= x"48a5b5cd";
-		Op <= "1101";
-      wait for 200 ns;	  
-
-	  wait;
-   end process;
-
-END;
