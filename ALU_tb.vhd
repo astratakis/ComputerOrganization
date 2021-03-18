@@ -1,30 +1,20 @@
---------------------------------------------------------------------------------
--- Company: 
--- Engineer:
+----------------------------------------------------------------------------------
+-- Institution:  Technical University of Crete
+-- Course:      Computer Architecture (HPY302)
+-- Engineer:    Georgios Frangias
+-- 
+-- Create Date:     16/03/2021 
+-- Module Name:    ALU_tb - behavior 
+-- Project Name:    HPY302_LAB
+-- Description: 
 --
--- Create Date:   18:40:34 03/16/2021
--- Design Name:   
--- Module Name:   /home/carioca/Desktop/comp_arch_help/HPY302_LAB/ALU_tb.vhd
--- Project Name:  HPY302_LAB
--- Target Device:  
--- Tool versions:  
--- Description:   
--- 
--- VHDL Test Bench Created by ISE for module: ALU
--- 
--- Dependencies:
--- 
--- Revision:
+-- Dependencies: 
+--
+-- Revision: 
 -- Revision 0.01 - File Created
--- Additional Comments:
+-- Additional Comments: 
 --
--- Notes: 
--- This testbench has been automatically generated using types std_logic and
--- std_logic_vector for the ports of the unit under test.  Xilinx recommends
--- that these types always be used for the top-level I/O of a design in order
--- to guarantee that the testbench will bind correctly to the post-implementation 
--- simulation model.
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
  
@@ -68,7 +58,7 @@ ARCHITECTURE behavior OF ALU_tb IS
 	signal Clock : std_logic := '0';
  
 BEGIN
-	Clock <= not Clock after 50ns;
+	Clock <= not Clock after 100ns;
  
 	-- Instantiate the Unit Under Test (UUT)
    uut: ALU PORT MAP (
@@ -87,25 +77,37 @@ BEGIN
    -- Stimulus process
    stim_proc: process
    begin		
-      -- hold reset state for 100 ns.
-		A <= x"00000001";
-		B <= x"00000001";
-		Op <= "0000";
 		
-      wait for 100 ns;	
-		
+		---1-1=0 Zero='1'
 		A <= x"00000001";
 		B <= x"00000001";
 		Op <= "0001";
+      wait for 200 ns;
 		
-      wait for 100 ns;
-
-		A <= x"f0012456";
-		B <= x"f1789401";
+		--- -1258291200 + 989855744 Cout='0' and Ovf='0'
+		A <= x"b5000000";
+		B <= x"3b000000";
 		Op <= "0000";
-      -- insert stimulus here 
-      wait for 100 ns;
+      wait for 200 ns;	
 
+		--- -318767104 + -117440512 Cout='1' and Ovf='0'
+		A <= x"ed000000";
+		B <= x"f9000000";
+		Op <= "0000";
+      wait for 200 ns;		
+		
+		--- 1744830464 + 754974720 Cout ='0' and Ovf='1'
+		A <= x"68000000";
+		B <= x"2d000000";
+		Op <= "0000";
+      wait for 200 ns;
+		
+		---
+		A <= x"99000000";
+		B <= x"bb000000";
+		Op <= "0000";
+		wait for 200 ns;
+		
       wait;
    end process;
 
