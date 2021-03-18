@@ -43,32 +43,34 @@ architecture Behavioral of ALU is
     --Temporary signals for output
     signal tOutput: std_logic_vector(31 downto 0);
     signal tOvf: std_logic;
-	 signal tmp: std_logic_vector(32 downto 0);
+	 signal tmp33: std_logic_vector(32 downto 0);
 begin
 
     process
-	 
+		variable OvfCheck: std_logic_vector(31 downto 0) := x"00000000";
     begin
 			wait until clock' event and clock = '1';
 			
         if Op = "0000" then
             tOutput <= A + B;   --addition
-            tmp <= std_logic_vector(unsigned('0' & A) + unsigned('0' & B));
-
-            if (A(31)=B(31) and tmp(31)/=A(31)) then
-                tOvf <= '1' after 10ns;
+				OvfCheck := std_logic_vector(unsigned(a) + unsigned(b));
+            tmp33 <= std_logic_vector(unsigned('0' & A) + unsigned('0' & B));
+				
+            if (A(31)=B(31) and OvfCheck(31)/=A(31)) then
+                tOvf <= '1';
             else
-                tOvf <= '0' after 10ns;
+                tOvf <= '0';
             end if;
 				
         elsif Op = "0001" then
             tOutput <= A - B;   --subtraction
-            tmp <= std_logic_vector(unsigned('0' & A) - unsigned('0' & B));
+				OvfCheck := std_logic_vector(unsigned(a) - unsigned(b));
+            tmp33 <= std_logic_vector(unsigned('0' & A) - unsigned('0' & B));
 				
-            if (A(31)/=B(31) and tmp(31)=B(31)) then
-                tOvf <= '1' after 10ns;
+            if (A(31)/=B(31) and OvfCheck(31)=B(31)) then
+                tOvf <= '1';
             else
-                tOvf <= '0' after 10ns;
+                tOvf <= '0';
             end if;
 
         elsif Op = "0010" then
@@ -94,7 +96,7 @@ begin
 	
 	Output <= tOutput after 10ns;
 	Zero <= '1' after 10ns when tOutput = x"00000000" else '0' after 10ns;
-	Cout <= tmp(32) after 10ns;
+	Cout <= tmp33(32) after 10ns;
 	Ovf <= tOvf after 10ns;
 	--Ovf <= '1' after 10ns when tOverflow = '1' and tOutput = else '0' after 10ns;
 end Behavioral;
