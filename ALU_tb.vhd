@@ -18,10 +18,6 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
  
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---USE ieee.numeric_std.ALL;
- 
 ENTITY ALU_tb IS
 END ALU_tb;
  
@@ -34,11 +30,12 @@ ARCHITECTURE behavior OF ALU_tb IS
          A : IN  std_logic_vector(31 downto 0);
          B : IN  std_logic_vector(31 downto 0);
          Op : IN  std_logic_vector(3 downto 0);
+			Clock : IN std_logic;
          Output : OUT  std_logic_vector(31 downto 0);
          Zero : OUT  std_logic;
          Cout : OUT  std_logic;
-         Ovf : OUT  std_logic;
-			Clock : IN std_logic
+         Ovf : OUT  std_logic
+			--Out33: OUT std_logic_vector(32 downto 0)
         );
     END COMPONENT;
     
@@ -53,6 +50,7 @@ ARCHITECTURE behavior OF ALU_tb IS
    signal Zero : std_logic;
    signal Cout : std_logic;
    signal Ovf : std_logic;
+	--signal Out33: std_logic_vector(32 downto 0);
    -- No clocks detected in port list. Replace <clock> below with 
    -- appropriate port name	
 	signal Clock : std_logic := '0';
@@ -70,6 +68,7 @@ BEGIN
           Cout => Cout,
           Ovf => Ovf,
 			 Clock => Clock
+			 --Out33 => Out33
         );
 
  
@@ -77,38 +76,151 @@ BEGIN
    -- Stimulus process
    stim_proc: process
    begin		
+
+		--------------
+		--Addition
+		--------------
 		
-		---1-1=0 Zero='1'
-		A <= x"00000001";
+		--- -1 (+) 1 Zero='1'
+		A <= x"ffffffff";
 		B <= x"00000001";
-		Op <= "0001";
-      wait for 200 ns;
+		Op <= "0000";
+      wait for 200 ns;	
 		
-		--- -1258291200 + 989855744 Cout='0' and Ovf='0'
+		--- -1258291200 (+) 989855744 Cout='0' and Ovf='0'
 		A <= x"b5000000";
 		B <= x"3b000000";
 		Op <= "0000";
       wait for 200 ns;	
 
-		--- -318767104 + -117440512 Cout='1' and Ovf='0'
+		--- -318767104 (+) -117440512 Cout='1' and Ovf='0'
 		A <= x"ed000000";
 		B <= x"f9000000";
 		Op <= "0000";
       wait for 200 ns;		
 		
-		--- 1744830464 + 754974720 Cout ='0' and Ovf='1'
+		--- 1744830464 (+) 754974720 Cout ='0' and Ovf='1'
 		A <= x"68000000";
 		B <= x"2d000000";
 		Op <= "0000";
       wait for 200 ns;
 		
-		---
+		--- -1728053248 (+) -1157627904 Cout ='1' and Ovf='1'
 		A <= x"99000000";
 		B <= x"bb000000";
 		Op <= "0000";
 		wait for 200 ns;
 		
-      wait;
+		--------------
+		--Subtraction
+		--------------
+		
+		--- 1 (-) 1 Zero='1'
+		A <= x"00000001";
+		B <= x"00000001";
+		Op <= "0001";
+      wait for 200 ns;	
+		
+		--- 10 (-) 5 Cout='0' and Ovf='0'
+		A <= x"0000000a";
+		B <= x"00000005";
+		Op <= "0001";
+      wait for 200 ns;	
+		
+		--- -318767104 (-) 117440512 Cout='1' and Ovf='0'
+		A <= x"a0000000";
+		B <= x"f0000000";
+		Op <= "0001";
+      wait for 200 ns;
+		
+		--- -1728053248 (-) 1157627904 Cout ='0' and Ovf='1'
+		A <= x"99000000";
+		B <= x"45000000";
+		Op <= "0001";
+		wait for 200 ns;
+
+		--- 1744830464 (-) -754974720 Cout ='1' and Ovf='1'
+		A <= x"68000000";
+		B <= x"d3000000";
+		Op <= "0001";
+      wait for 200 ns;
+		
+		--------------
+		--Logic AND
+		--------------
+		
+		A <= x"48a5b5cd";
+		B <= x"1a8510d7";
+		Op <= "0010";
+      wait for 200 ns;
+		
+		--------------
+		--Logic OR
+		--------------
+		
+		A <= x"48a5b5cd";
+		B <= x"1a8510d7";
+		Op <= "0011";
+      wait for 200 ns;
+		
+		--------------
+		--Invarsion
+		--------------
+
+		A <= x"48a5b5cd";
+		Op <= "0100";
+      wait for 200 ns;
+		
+		--------------
+		--Logic NAND
+		--------------
+
+		A <= x"48a5b5cd";
+		B <= x"1a8510d7";
+		Op <= "0110";
+      wait for 200 ns;
+
+	  	--------------------------
+		--Arithmetic shift right
+		--------------------------
+		
+		A <= x"48a5b5cd";
+		Op <= "1000";
+      wait for 200 ns;
+
+	  	---------------------
+		--Logic shift right
+		---------------------
+
+		A <= x"48a5b5cd";
+		Op <= "1001";
+      wait for 200 ns;
+
+	  	--------------------
+		--Logic shift left
+		--------------------
+
+		A <= x"48a5b5cd";
+		Op <= "1010";
+      wait for 200 ns;
+
+	  	----------------------
+		--Circular shift left
+		----------------------
+
+		A <= x"48a5b5cd";
+		Op <= "1100";
+      wait for 200 ns;	  
+
+	  	-----------------------
+		--Circular shift right
+		-----------------------
+
+		A <= x"48a5b5cd";
+		Op <= "1101";
+      wait for 200 ns;	  
+
+	  wait;
    end process;
 
 END;
