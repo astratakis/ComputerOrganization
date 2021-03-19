@@ -21,7 +21,7 @@ USE ieee.std_logic_1164.ALL;
 ENTITY ALU_tb IS
 END ALU_tb;
  
-ARCHITECTURE behavior OF ALU_tb IS 
+ARCHITECTURE behavioral OF ALU_tb IS 
  
     -- Component Declaration for the Unit Under Test (UUT)
  
@@ -30,7 +30,6 @@ ARCHITECTURE behavior OF ALU_tb IS
          A : IN  std_logic_vector(31 downto 0);
          B : IN  std_logic_vector(31 downto 0);
          Op : IN  std_logic_vector(3 downto 0);
-			Clock : IN std_logic;
          Output : OUT  std_logic_vector(31 downto 0);
          Zero : OUT  std_logic;
          Cout : OUT  std_logic;
@@ -51,12 +50,9 @@ ARCHITECTURE behavior OF ALU_tb IS
    signal Cout : std_logic;
    signal Ovf : std_logic;
 	--signal Out33: std_logic_vector(32 downto 0);
-   -- No clocks detected in port list. Replace <clock> below with 
-   -- appropriate port name	
-	signal Clock : std_logic := '0';
+	
  
 BEGIN
-	Clock <= not Clock after 100ns;
  
 	-- Instantiate the Unit Under Test (UUT)
    uut: ALU PORT MAP (
@@ -66,8 +62,7 @@ BEGIN
           Output => Output,
           Zero => Zero,
           Cout => Cout,
-          Ovf => Ovf,
-			 Clock => Clock
+          Ovf => Ovf
 			 --Out33 => Out33
         );
 
@@ -75,7 +70,7 @@ BEGIN
 
    -- Stimulus process
    stim_proc: process
-   begin		
+   begin
 
 		--------------
 		--Addition
@@ -223,4 +218,4 @@ BEGIN
 	  wait;
    end process;
 
-END;
+END BEHAVIORAL;
