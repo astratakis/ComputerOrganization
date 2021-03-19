@@ -3,8 +3,8 @@
 -- Course:      Computer Architecture (HPY302)
 -- Engineer:    Georgios Frangias
 -- 
--- Create Date:     16/03/2021 
--- Module Name:     register - Behavioral 
+-- Create Date:     17/03/2021 
+-- Module Name:     regist - Behavioral 
 -- Project Name:    HPY302_LAB
 -- Description: 
 --
