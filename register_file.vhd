@@ -105,18 +105,109 @@ component mux_32to1 is
 	
 end component;
 
+type array32 is array (0 to 31) of std_logic_vector(31 downto 0);
+
+signal DataoutArray : array32;
+signal DecoderOut: std_logic_vector(31 downto 0);
+signal WriteEnable: std_logic_vector(31 downto 0);
 begin
 
+	with WrEn select
+		WriteEnable <= DecoderOut and x"00000000" when '0',
+							DecoderOut and x"ffffffff" when '1',
+							x"00000000" when others;
+							
+
 	register_generator:
+	
 		for i in 0 to 31 generate
 			registers: regist port map(
-				CLK,
-				Din(i),
-				WrEn,
-				reset
+				CLK => CLK,
+				Datain => Din,
+				WE => WriteEnable(i),
+				RST => '0',
+				Dataout => DataoutArray(i)
 			);
 	end generate register_generator;
-
-
+	
+	decoder_map: decoder_5to32 port map(
+		Awr => Awr,
+		Aout => DecoderOut
+	);
+	
+	mux1: mux_32to1 port map(
+		Ard => Ard1,
+		Datain0 => DataoutArray(0),
+		Datain1 => DataoutArray(1),
+		Datain2 => DataoutArray(2),
+		Datain3 => DataoutArray(3),
+		Datain4 => DataoutArray(4),
+		Datain5 => DataoutArray(5),
+		Datain6 => DataoutArray(6),
+		Datain7 => DataoutArray(7),
+		Datain8 => DataoutArray(8),
+		Datain9 => DataoutArray(9),
+		Datain10 => DataoutArray(10),
+		Datain11 => DataoutArray(11),
+		Datain12 => DataoutArray(12),
+		Datain13 => DataoutArray(13),
+		Datain14 => DataoutArray(14),
+		Datain15 => DataoutArray(15),
+		Datain16 => DataoutArray(16),
+		Datain17 => DataoutArray(17),
+		Datain18 => DataoutArray(18),
+		Datain19 => DataoutArray(19),
+		Datain20 => DataoutArray(20),
+		Datain21 => DataoutArray(21),
+		Datain22 => DataoutArray(22),
+		Datain23 => DataoutArray(23),
+		Datain24 => DataoutArray(24),
+		Datain25 => DataoutArray(25),
+		Datain26 => DataoutArray(26),
+		Datain27 => DataoutArray(27),
+		Datain28 => DataoutArray(28),
+		Datain29 => DataoutArray(29),
+		Datain30 => DataoutArray(30),
+		Datain31 => DataoutArray(31),
+		Dataout => Dout1
+	);
+	
+		mux2: mux_32to1 port map(
+		Ard => Ard2,
+		Datain0 => DataoutArray(0),
+		Datain1 => DataoutArray(1),
+		Datain2 => DataoutArray(2),
+		Datain3 => DataoutArray(3),
+		Datain4 => DataoutArray(4),
+		Datain5 => DataoutArray(5),
+		Datain6 => DataoutArray(6),
+		Datain7 => DataoutArray(7),
+		Datain8 => DataoutArray(8),
+		Datain9 => DataoutArray(9),
+		Datain10 => DataoutArray(10),
+		Datain11 => DataoutArray(11),
+		Datain12 => DataoutArray(12),
+		Datain13 => DataoutArray(13),
+		Datain14 => DataoutArray(14),
+		Datain15 => DataoutArray(15),
+		Datain16 => DataoutArray(16),
+		Datain17 => DataoutArray(17),
+		Datain18 => DataoutArray(18),
+		Datain19 => DataoutArray(19),
+		Datain20 => DataoutArray(20),
+		Datain21 => DataoutArray(21),
+		Datain22 => DataoutArray(22),
+		Datain23 => DataoutArray(23),
+		Datain24 => DataoutArray(24),
+		Datain25 => DataoutArray(25),
+		Datain26 => DataoutArray(26),
+		Datain27 => DataoutArray(27),
+		Datain28 => DataoutArray(28),
+		Datain29 => DataoutArray(29),
+		Datain30 => DataoutArray(30),
+		Datain31 => DataoutArray(31),
+		Dataout => Dout2
+	);
+	
 end Behavioral;
 
