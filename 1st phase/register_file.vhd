@@ -1,13 +1,11 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
+-- Institution:  Technical University of Crete
+-- Course:      Computer Architecture (HPY302)
+-- Engineer:    Georgios Frangias
 -- 
--- Create Date:    21:29:42 03/19/2021 
--- Design Name: 
--- Module Name:    register_file - Behavioral 
--- Project Name: 
--- Target Devices: 
--- Tool versions: 
+-- Create Date:     22/03/2021 
+-- Module Name:     register_file - Behavioral 
+-- Project Name:    HPY302_LAB
 -- Description: 
 --
 -- Dependencies: 
@@ -23,6 +21,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity register_file is
 
 	port(
+		--Inputs
 		CLK: in std_logic;
 		WrEn: in std_logic;
 		Awr: in std_logic_vector(4 downto 0);
@@ -30,13 +29,14 @@ entity register_file is
 		Ard2: in std_logic_vector(4 downto 0);
 		Din: in std_logic_vector(31 downto 0);
 		
+		--Outputs
 		Dout1: out std_logic_vector(31 downto 0);
 		Dout2: out std_logic_vector(31 downto 0)
 		);
 		
 end register_file;
 
-architecture Behavioral of register_file is
+architecture register_file of register_file is
 
 component decoder_5to32 is 
 
@@ -113,8 +113,8 @@ signal WriteEnable: std_logic_vector(31 downto 0);
 begin
 
 	with WrEn select
-		WriteEnable <= DecoderOut and x"00000000" when '0',
-							DecoderOut and x"ffffffff" when '1',
+		WriteEnable <= DecoderOut and x"0000_0000" when '0',
+							DecoderOut and x"ffff_fffe" when '1',
 							x"00000000" when others;
 							
 
@@ -209,5 +209,5 @@ begin
 		Dataout => Dout2
 	);
 	
-end Behavioral;
+end register_file;
 
