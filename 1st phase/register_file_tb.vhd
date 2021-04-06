@@ -55,21 +55,21 @@
      tb : PROCESS
      BEGIN
 
-        wait for 10 ns; -- wait until global set/reset completes
+		wait for 10 ns; -- wait until global set/reset completes
         
-        Ard1 <= "00000";
-        Ard2 <= "00001";
-        Awr <= "00000";
-        Din <= x"eeeeffff";
-        WrEn <= '1';
-        wait for 100ns;
-		  
-		  Ard1 <= "00000";
-        Ard2 <= "00001";
-        Awr <= "00001";
-        Din <= x"ffffffff";
-        WrEn <= '1';
-        wait;
+		WrEn <= '1';
+		Ard1 <= "00000";
+		Ard2 <= "00000";
+		Awr <= "00000";
+		Din <= x"eeeeffff";
+		wait for 200 ns;
+		
+		for I in 0 to 31 loop
+			Ard2 <= Ard1;
+			Awr <= Ard1;
+			Ard1 <= std_logic_vector(unsigned(Ard1)+1);
+			wait for 200 ns;
+		end loop;
 		  
      END PROCESS tb;
   --  End Test Bench 

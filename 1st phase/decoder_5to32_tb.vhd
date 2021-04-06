@@ -17,7 +17,7 @@
 ----------------------------------------------------------------------------------
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
-
+use ieee.numeric_std.all;
  
 ENTITY decoder_5to32_tb IS
 END decoder_5to32_tb;
@@ -51,16 +51,15 @@ BEGIN
    -- Stimulus process
    stim_proc: process
    begin		
-      
-		Awr <= "00000";
-      wait for 100 ns;
-
-		Awr <= "11111";
-      wait for 100 ns;		
+      Awr <= "00000";
+		wait for 50 ns;
 		
-		Awr <= "01100";
-      wait for 100 ns;
-
+		--Check all possible inputs
+		for I in 0 to 31 loop
+			Awr <= std_logic_vector(unsigned(Awr)+1);
+			wait for 50 ns;
+		end loop;
+		
       wait;
    end process;
 

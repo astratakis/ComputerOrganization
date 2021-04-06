@@ -12,7 +12,8 @@
 --
 -- Revision: 
 -- Revision 0.01 - File Created
--- Additional Comments: 
+-- Additional Comments: This is the implementation of a register 
+-- that stores one 32 bit vector
 --
 ----------------------------------------------------------------------------------
 library ieee;
@@ -27,7 +28,7 @@ entity regist is
     CLK: in std_logic;    
     RST: in std_logic;
     Datain: in std_logic_vector(31 downto 0);
-    WE: in std_logic;
+    WE: in std_logic;	--write enable
 	 
     --Outputs
     Dataout: out std_logic_vector(31 downto 0)
@@ -35,21 +36,21 @@ entity regist is
 	 
 end regist;
 
-architecture Behavioral of regist is
+architecture regist of regist is
 
 begin
 	process
 	begin
-		wait until CLK' event and CLK = '1';
+		wait until CLK' event and CLK = '1';	--wait for rising clock
 		
-		if RST = '1' then
-			Dataout <= x"00000000" after 10ns;
+		if RST = '1' then								--with enabled reset
+			Dataout <= x"00000000" after 10ns;	--the output is zero
 		else
-			if WE = '1' then
-				Dataout <= Datain after 10ns;
+			if WE = '1' then							--else and if write enable enabled
+				Dataout <= Datain after 10ns;		--read out the stored data
 			end if;
 		end if;
 	end process;
 
-end Behavioral;
+end regist;
 

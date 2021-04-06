@@ -6,7 +6,8 @@
 -- Create Date:     22/03/2021 
 -- Module Name:     register_file - Behavioral 
 -- Project Name:    HPY302_LAB
--- Description: 
+-- Description: A 32 register file that writes one register
+-- and reads two registers at a time
 --
 -- Dependencies: 
 --
@@ -23,21 +24,23 @@ entity register_file is
 	port(
 		--Inputs
 		CLK: in std_logic;
-		WrEn: in std_logic;
-		Awr: in std_logic_vector(4 downto 0);
-		Ard1: in std_logic_vector(4 downto 0);
-		Ard2: in std_logic_vector(4 downto 0);
-		Din: in std_logic_vector(31 downto 0);
+		WrEn: in std_logic;							--write enable
+		Awr: in std_logic_vector(4 downto 0);	--write address
+		Ard1: in std_logic_vector(4 downto 0);	--read address 1
+		Ard2: in std_logic_vector(4 downto 0);	--read address 2
+		Din: in std_logic_vector(31 downto 0);	--write input
 		
 		--Outputs
-		Dout1: out std_logic_vector(31 downto 0);
-		Dout2: out std_logic_vector(31 downto 0)
+		Dout1: out std_logic_vector(31 downto 0);	--read output 1
+		Dout2: out std_logic_vector(31 downto 0) 	--read output 2
 		);
 		
 end register_file;
 
 architecture register_file of register_file is
 
+
+--Decoder
 component decoder_5to32 is 
 
 	port(
@@ -48,6 +51,7 @@ component decoder_5to32 is
 
 end component;
 
+--Register
 component regist is
 
 	port(
@@ -61,6 +65,7 @@ component regist is
 
 end component;
 
+--Multiplexer
 component mux_32to1 is
 
 	port(
@@ -105,22 +110,33 @@ component mux_32to1 is
 	
 end component;
 
+--Using 'type' to create an array of 32 32-bit vectors
 type array32 is array (0 to 31) of std_logic_vector(31 downto 0);
 
-signal DataoutArray : array32;
-signal DecoderOut: std_logic_vector(31 downto 0);
-signal WriteEnable: std_logic_vector(31 downto 0);
+signal DataoutArray : array32;	--output of all registers 
+signal DecoderOut: std_logic_vector(31 downto 0);	--output of the decoder
+signal WriteEnable: std_logic_vector(31 downto 0);	--write enable for every register
 begin
-
-	with WrEn select
-		WriteEnable <= DecoderOut and x"0000_0000" when '0',
-							DecoderOut and x"ffff_fffe" when '1',
-							x"00000000" when others;
-							
-
-	register_generator:
 	
-		for i in 0 to 31 generate
+	--Implementing logical 'AND' of write enable and decoder
+	with WrEn select
+		WriteEnable <= DecoderOut and x"0000_0000" when '0',	--if write enable is disabled don't write anything
+							DecoderOut and x"ffff_fffe" when '1',	--if write enable is enabled write on the decoder output 
+																				--except for register R0
+							x"0000_0000" when others;
+	
+	--Register R0 always '0'
+	register0: regist port map(
+		CLK => CLK,
+		Datain => x"0000_0000",
+		WE => WriteEnable(0),
+		RST => '1',
+		Dataout => DataoutArray(0)
+		);
+	
+	--Create 32 registers using for generate
+	register_generator:
+		for i in 1 to 31 generate
 			registers: regist port map(
 				CLK => CLK,
 				Datain => Din,

@@ -6,7 +6,7 @@
 -- Create Date:     16/03/2021 
 -- Module Name:    ALU_tb - behavior 
 -- Project Name:    HPY302_LAB
--- Description: 
+-- Description: Testbench for the module ALU
 --
 -- Dependencies: 
 --

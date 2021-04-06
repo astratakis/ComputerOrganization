@@ -3,8 +3,8 @@
 -- Course:      Computer Architecture (HPY302)
 -- Engineer:    Georgios Frangias
 -- 
--- Create Date:     16/03/2021 
--- Module Name:     register - Behavioral 
+-- Create Date:     17/03/2021 
+-- Module Name:     regist_tb - Behavioral 
 -- Project Name:    HPY302_LAB
 -- Description: 
 --
@@ -46,10 +46,9 @@ ARCHITECTURE behavior OF regist_tb IS
    signal Dataout : std_logic_vector(31 downto 0);
 
    -- Clock period definitions
-   constant CLK_period : time := 100 ns;
  
 BEGIN
-	CLK <= not CLK after CLK_period;
+	CLK <= not CLK after 100 ns;
 	-- Instantiate the Unit Under Test (UUT)
    uut: regist PORT MAP (
           CLK => CLK,
@@ -63,37 +62,41 @@ BEGIN
    stim_proc: process
    begin		
       
-		---
+		wait for 20 ns;
+		---Reset disabled -- Write Enable enabled
+		---Reading input
 		Datain <= x"00000001";
 		RST <= '0';
 		WE <= '1';
       wait for 200 ns;	
 		
-		---
+		---Reset enabled -- Write Enable disabled
 		Datain <= x"00000001";
 		RST <= '1';
 		WE <= '0';
       wait for 200 ns;
 
-		---
+		---Reset disabled -- Write Enable enabled
+		---Reading input
 		Datain <= x"00000001";
 		RST <= '0';
 		WE <= '1';
       wait for 200 ns;
 		
-		---
+		---Reset enabled -- Write Enable enabled
 		Datain <= x"00000001";
 		RST <= '1';
 		WE <= '1';
       wait for 200 ns;
 		
-		---
-		Datain <= x"00000001";
+		---Reset disabled -- Write Enable enabled
+		---Reading input
+		Datain <= x"00001000";
 		RST <= '0';
 		WE <= '1';
       wait for 200 ns;
 		
-		---
+		---Reset disabled -- Write Enable disabled
 		Datain <= x"ffffffff";
 		RST <= '0';
 		WE <= '0';
