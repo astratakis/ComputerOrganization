@@ -6,7 +6,8 @@
 -- Create Date:     26/03/2021 
 -- Module Name:     incrementor_4 - adder 
 -- Project Name:    HPY302_LAB
--- Description: 
+-- Description: A simple 32-bit 1-input adder which increments the
+--	input by 4.
 --
 -- Dependencies: 
 --
@@ -33,7 +34,7 @@ end incrementor_4;
 architecture adder of incrementor_4 is
 
 begin
-
+	--Increment by 4 
 	Increm_out <= std_logic_vector(to_unsigned(to_integer(unsigned(Increm_in))+4, 32));
 
 end adder;

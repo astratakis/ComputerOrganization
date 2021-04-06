@@ -17,10 +17,7 @@
 ----------------------------------------------------------------------------------
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
- 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---USE ieee.numeric_std.ALL;
+use ieee.numeric_std.all; 
  
 ENTITY RAM_tb IS
 END RAM_tb;
@@ -44,10 +41,10 @@ ARCHITECTURE behavior OF RAM_tb IS
 
    --Inputs
    signal clk : std_logic := '0';
+	signal data_we : std_logic := '0';
+	signal data_din : std_logic_vector(31 downto 0) := (others => '0');
    signal inst_addr : std_logic_vector(10 downto 0) := (others => '0');
-   signal data_we : std_logic := '0';
    signal data_addr : std_logic_vector(10 downto 0) := (others => '0');
-   signal data_din : std_logic_vector(31 downto 0) := (others => '0');
 
  	--Outputs
    signal inst_dout : std_logic_vector(31 downto 0);
@@ -77,14 +74,34 @@ BEGIN
       -- hold reset state for 100 ns.
       wait for 10 ns;	
 		
-		data_we <= '1';
-		data_din <= x"00000001";	
-		data_addr <= "00001010110";
-		inst_addr <= "00001010110";
 		
-		wait for 100ns;
-      -- insert stimulus here 
-
+		data_we <= '1';
+		data_addr <= b"10000_000000";
+		data_din <= x"0000_00f0";
+		inst_addr <= b"00000_000000";
+		wait for 200 ns;	
+		
+		--Write 11 data adresses and read 11 instructions
+		for I in 0 to 10 loop
+			data_addr <= std_logic_vector(unsigned(data_addr)+1);
+			inst_addr <= std_logic_vector(unsigned(inst_addr)+1);
+			data_din <= std_logic_vector(unsigned(data_din)+2);
+			data_addr <= std_logic_vector(unsigned(data_addr)+1);
+			wait for 200 ns;
+		end loop;
+		
+		data_we <= '0'; 
+		data_addr <= b"10000_000000";
+		wait for 200 ns;
+		
+		--Try to write with disabled write enable
+		for I in 0 to 3 loop
+			data_addr <= std_logic_vector(unsigned(data_addr)+1);
+			inst_addr <= std_logic_vector(unsigned(inst_addr)+1);
+			data_din <= std_logic_vector(unsigned(data_din)+2);
+			data_addr <= std_logic_vector(unsigned(data_addr)+1);
+			wait for 200 ns;
+		end loop;		
       wait;
    end process;
 

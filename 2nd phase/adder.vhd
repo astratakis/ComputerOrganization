@@ -6,7 +6,7 @@
 -- Create Date:     26/03/2021 
 -- Module Name:     adder - adder 
 -- Project Name:    HPY302_LAB
--- Description: 
+-- Description: Simple 32-bit 2-input adder
 --
 -- Dependencies: 
 --
@@ -35,6 +35,7 @@ end adder;
 architecture adder of adder is
 
 begin
+	--Adding in1 and in2
 	Adder_out <= std_logic_vector(unsigned(Adder_in1) + unsigned(Adder_in2));
 
 end adder;

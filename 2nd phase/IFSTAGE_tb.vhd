@@ -4,10 +4,10 @@
   USE ieee.std_logic_1164.ALL;
   USE ieee.numeric_std.ALL;
 
-  ENTITY testbench IS
-  END testbench;
+  ENTITY IFSTAGE_tb IS
+  END IFSTAGE_tb;
 
-  ARCHITECTURE behavior OF testbench IS 
+  ARCHITECTURE behavior OF IFSTAGE_tb IS 
 
   -- Component Declaration
           COMPONENT IFSTAGE is
@@ -53,11 +53,11 @@
      tb : PROCESS
      BEGIN
 
-        wait for 20 ns; -- wait until global set/reset completes
+			wait for 20 ns; -- wait until global set/reset completes
 			PC_sel <= '0';
 			PC_LdEn <= '1';
 			Reset <= '0';
-			PC_Immed <= x"0000_0001";
+			PC_Immed <= x"0000_1000";
 			wait for 500 ns;
 			
 			PC_LdEn <= '0';
@@ -73,9 +73,8 @@
 			PC_sel <= '1';
 			wait for 100ns;
 			
-			PC_Immed <= x"000f_0000";
-			
-        wait; -- will wait forever
+			PC_sel <= '0';
+			wait; -- will wait forever
      END PROCESS tb;
   --  End Test Bench 
 

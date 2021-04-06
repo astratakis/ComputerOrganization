@@ -6,7 +6,8 @@
 -- Create Date:     27/03/2021 
 -- Module Name:     EXSTAGE -  ex_stage
 -- Project Name:    HPY302_LAB
--- Description: 
+-- Description:	Implementation of the EXSTAGE module.
+-- This module incorporates the ALU module in the processor.
 --
 -- Dependencies: 
 --
@@ -51,6 +52,7 @@ architecture ex_stage of EXSTAGE is
 				 );
 		end component;
 		
+		--Multiplexer
 		component mux_2to1 is
 			port(
 				--Inputs
@@ -63,17 +65,15 @@ architecture ex_stage of EXSTAGE is
 			);			
 		end component;
 		
-		signal mux_output: std_logic_vector(31 downto 0);
+		signal mux_output: std_logic_vector(31 downto 0); --the output of the multiplexer
 begin
 	
-	ALU: ALU port map(
+	arithmetic_logic_unit: ALU port map(
 		A => RF_A,
 		B => mux_output,
 		Op => ALU_func,
 		Output => ALU_out,
-		Zero => ALU_zero,
-		Cout => Cout,
-		Ovf => Ovf
+		Zero => ALU_zero
 		);
 	
 	multiplexer: mux_2to1 port map(

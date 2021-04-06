@@ -49,10 +49,10 @@ BEGIN
 
    -- Stimulus process
    stim_proc: process
-   begin		
-		wait for 10ns;
-		Increm_in <= x"00000001";
-      wait;
+   begin
+		--311552561 + 4 = 311552565
+		Increm_in <= x"1291_ea31";
+		wait for 10 ns;
    end process;
 
 END;

@@ -6,7 +6,8 @@
 -- Create Date:     31/03/2021 
 -- Module Name:     MEMSTAGE_RAM - mem_stage_ram 
 -- Project Name:    HPY302_LAB
--- Description: 
+-- Description:	Module combining MEMSTAGE and RAM solely intended 
+-- for testing
 --
 -- Dependencies: 
 --

@@ -6,7 +6,9 @@
 -- Create Date:     26/03/2021 
 -- Module Name:     RAM - ram 
 -- Project Name:    HPY302_LAB
--- Description: 
+-- Description: Implementation of a 2048x32 RAM module
+-- the first 1024 memory addresses are instructions initialized
+-- from the file rom.data and the other 1024 are data initialized to '0'.
 --
 -- Dependencies: 
 --
@@ -38,8 +40,11 @@ entity RAM is
 end RAM;
 
 architecture ram of RAM is
+	
+	--Using 'type' to create an array of 2048 32-bit vectors
 	type ram_type is array(2047 downto 0) of std_logic_vector(31 downto 0);
 	
+	--Function to initialize instructions from rom.data 
 	impure function InitRamFromFile (RamFileName : in string) return ram_type is
 	FILE ramfile : text is in RamFileName;
 	variable RamFileLine : line;
@@ -54,21 +59,23 @@ architecture ram of RAM is
 		end loop;
 	return ram;
 	end function;
-
+	
+	--Call the function above
 	signal RAM: ram_type := InitRamFromFile("rom3.data");
 	
 begin
 	process (clk)
 	begin
+	--When clock at rising edge
 	if clk'event and clk = '1' then
-		if data_we = '1' then
-			RAM(to_integer(unsigned((data_addr)))) <= data_din;
+		if data_we = '1' then	--if write enable is enabled
+			RAM(to_integer(unsigned((data_addr)))) <= data_din;	--add data in RAM in the address given by data_addr 
 		end if;
 	end if;
 	end process;
-
-	data_dout <= RAM(to_integer(unsigned((data_addr)))) after 12ns;
-	inst_dout <= RAM(to_integer(unsigned((inst_addr)))) after 12ns;
+	
+	data_dout <= RAM(to_integer(unsigned((data_addr)))) after 12ns;	--output added data
+	inst_dout <= RAM(to_integer(unsigned((inst_addr)))) after 12ns;	--output instruction
 
 end ram;
 

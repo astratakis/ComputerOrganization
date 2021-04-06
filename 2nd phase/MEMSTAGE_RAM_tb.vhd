@@ -6,7 +6,7 @@
 -- Create Date:     01/04/2021 
 -- Module Name:     MEMSTAGE_RAM_tb - behavior 
 -- Project Name:    HPY302_LAB
--- Description: 
+-- Description: 	Testbench of the module MEMSTAGE_RAM
 --
 -- Dependencies: 
 --

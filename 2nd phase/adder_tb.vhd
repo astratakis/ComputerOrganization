@@ -61,6 +61,7 @@ BEGIN
    stim_proc: process
    begin		
       wait for 10 ns;	
+		--63 + 397 = 460
 		Adder_in1 <= x"0000003f";
 		Adder_in2 <= x"0000018d";
 			

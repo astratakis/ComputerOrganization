@@ -3,10 +3,10 @@
 -- Course:      Computer Architecture (HPY302)
 -- Engineer:    Georgios Frangias
 -- 
--- Create Date:     22/03/2021 
+-- Create Date:     26/03/2021 
 -- Module Name:     IFSTAGE - if_stage 
 -- Project Name:    HPY302_LAB
--- Description: 
+-- Description: Implementation of the instruction fetch stage
 --
 -- Dependencies: 
 --
@@ -34,6 +34,7 @@ end IFSTAGE;
 
 architecture if_stage of IFSTAGE is
 	
+	--PC register
 	component regist is 
 		port(
 			--Inputs
@@ -47,6 +48,7 @@ architecture if_stage of IFSTAGE is
 			);
 	end component;
 	
+	--Incrementor
 	component incrementor_4 is
 		port(
 			--Input
@@ -57,6 +59,7 @@ architecture if_stage of IFSTAGE is
 			);
 	end component;
 	
+	--Adder
 	component adder is
 		port(
 			--Inputs
@@ -68,6 +71,7 @@ architecture if_stage of IFSTAGE is
 			);
 	end component;
 	
+	--Multiplexer
 	component mux_2to1 is
 		port(
 			--Inputs
@@ -80,12 +84,14 @@ architecture if_stage of IFSTAGE is
 			);
 	end component;
 	
-signal data_in_PC: std_logic_vector(31 downto 0);
-signal data_out_PC: std_logic_vector(31 downto 0);
-signal increm_out: std_logic_vector(31 downto 0);
-signal adder_out: std_logic_vector(31 downto 0);
+signal data_in_PC: std_logic_vector(31 downto 0); 	--PC input / mux output
+signal data_out_PC: std_logic_vector(31 downto 0); --PC output
+signal increm_out: std_logic_vector(31 downto 0); 	--incrementor output
+signal adder_out: std_logic_vector(31 downto 0); 	--adder output
+signal immedX4: std_logic_vector(31 downto 0);		--immed multiplied by 4
 
 begin	
+	--Output PC is equal to the output of the PC register
 	PC <= data_out_PC;
 	
 	incrementor: incrementor_4 port map(

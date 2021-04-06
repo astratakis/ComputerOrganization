@@ -1,4 +1,20 @@
--- TestBench Template 
+----------------------------------------------------------------------------------
+-- Institution:  Technical University of Crete
+-- Course:      Computer Architecture (HPY302)
+-- Engineer:    Georgios Frangias
+-- 
+-- Create Date:     27/03/2021 
+-- Module Name:     DECSTAGE_tb - behavior 
+-- Project Name:    HPY302_LAB
+-- Description:	Testbench for the module DECSTAGE
+--
+-- Dependencies: 
+--
+-- Revision: 
+-- Revision 0.01 - File Created
+-- Additional Comments: 
+--
+----------------------------------------------------------------------------------
 
   LIBRARY ieee;
   USE ieee.std_logic_1164.ALL;

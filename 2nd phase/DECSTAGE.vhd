@@ -6,7 +6,8 @@
 -- Create Date:     27/03/2021 
 -- Module Name:     DECSTAGE - dec_stage 
 -- Project Name:    HPY302_LAB
--- Description: 
+-- Description: Module used to decide what to read/write from/in 
+-- register file based on the input instruction
 --
 -- Dependencies: 
 --
@@ -37,7 +38,9 @@ entity DECSTAGE is
 		);
 end DECSTAGE;
 
-architecture Behavioral of DECSTAGE is
+architecture dec_stage of DECSTAGE is
+
+	--Multiplexer
 	component mux_2to1 is
 		port(
 			--Inputs
@@ -50,6 +53,20 @@ architecture Behavioral of DECSTAGE is
 			);
 	end component;
 	
+		--Multiplexer
+		component mux_2to1_5bit is
+		port(
+			--Inputs
+			Sel: in std_logic;
+			Datain0: in std_logic_vector(4 downto 0);
+			Datain1: in std_logic_vector(4 downto 0);
+			
+			--Output
+			Dataout: out std_logic_vector(4 downto 0)
+			);
+	end component;
+	
+	--Immediate extender
 	component immed_extender is
 		port(
 			--Inputs
@@ -61,6 +78,7 @@ architecture Behavioral of DECSTAGE is
 			);
 	end component;
 	
+	--Register file
 	component register_file is
 		port(
 			--Inputs
@@ -78,8 +96,8 @@ architecture Behavioral of DECSTAGE is
 			
 	end component;
 	
-	signal RF_datain: std_logic_vector(31 downto 0);
-	signal read_register_2: std_logic_vector(4 downto 0);
+	signal RF_datain: std_logic_vector(31 downto 0);		--data that will be written in RF 
+	signal read_register_2: std_logic_vector(4 downto 0);	--the selected 2nd read address for the RF 
 	
 begin
 	ALU_MEM_mux: mux_2to1 port map(
@@ -89,7 +107,7 @@ begin
 		Dataout => RF_datain
 		);
 		
-	Instr_mux: mux_2to1 port map(
+	Instr_mux: mux_2to1_5bit port map(
 		Sel => RF_B_sel,
 		Datain0 => Instr(15 downto 11),
 		Datain1 => Instr(20 downto 16),
@@ -113,5 +131,5 @@ begin
 		Dout2 => RF_B
 		);
 		
-end Behavioral;
+end dec_stage;
 

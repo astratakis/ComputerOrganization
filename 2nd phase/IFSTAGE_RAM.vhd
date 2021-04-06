@@ -6,7 +6,8 @@
 -- Create Date:     31/03/2021 
 -- Module Name:     IFSTAGE_RAM - if_stage_ram 
 -- Project Name:    HPY302_LAB
--- Description: 
+-- Description:	Module combining IFSTAGE and RAM solely intended 
+-- for testing
 --
 -- Dependencies: 
 --
@@ -36,6 +37,7 @@ end IFSTAGE_RAM;
 
 architecture if_stage_ram of IFSTAGE_RAM is
 
+	--IFSTAGE
 	component IFSTAGE is
 		port(
 			--Inputs
@@ -50,6 +52,7 @@ architecture if_stage_ram of IFSTAGE_RAM is
 			);
 	end component;
 		
+	--RAM	
 	component RAM is 
 		port(
 			--Inputs

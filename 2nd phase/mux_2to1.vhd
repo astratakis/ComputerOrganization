@@ -6,7 +6,8 @@
 -- Create Date:     26/03/2021 
 -- Module Name:     mux_2to1 - multiplexer 
 -- Project Name:    HPY302_LAB
--- Description: 
+-- Description:	A simple multiplexer selecting one
+-- of two 32-bit inputs
 --
 -- Dependencies: 
 --
@@ -38,8 +39,8 @@ begin
     
 	with Sel select
 	Dataout <= Datain0 after 10ns when '0',
-					Datain1 after 10ns when '1';
-
+					Datain1 after 10ns when '1',
+				  x"0000_0000" when others;
 end multiplexer;
 
 
