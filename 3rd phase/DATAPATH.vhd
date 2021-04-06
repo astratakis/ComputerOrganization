@@ -6,7 +6,7 @@
 -- Create Date:     01/04/2021 
 -- Module Name:    DATAPATH - data_path 
 -- Project Name:    HPY302_LAB
--- Description: 
+-- Description:	Implementation of the processor's datapath
 --
 -- Dependencies: 
 --
@@ -39,13 +39,16 @@ entity DATAPATH is
 		PC: out std_logic_vector(31 downto 0);
 		MM_WrEn: out std_logic;
 		MM_Addr: out std_logic_vector(10 downto 0);
-		MM_WrData: out std_logic_vector(31 downto 0)
+		MM_WrData: out std_logic_vector(31 downto 0);
+		RF_A: out std_logic_vector(31 downto 0);
+		RF_B: out std_logic_vector(31 downto 0)
 	);
 	
 end DATAPATH;
 
 architecture data_path of DATAPATH is
-
+	
+	--IFSTAGE
 	component IFSTAGE is
 		port(
 			--Inputs
@@ -60,6 +63,7 @@ architecture data_path of DATAPATH is
 			);
 	end component;
 	
+	--DECSTAGE
 	component DECSTAGE is
 		port(
 			--Inputs
@@ -79,6 +83,7 @@ architecture data_path of DATAPATH is
 		);
 	end component;
 	
+	--EXSTAGE
 	component EXSTAGE is
 		port(
 			--Inputs
@@ -94,7 +99,8 @@ architecture data_path of DATAPATH is
 			);
 	end component;
 	
-		component MEMSTAGE is
+	--MEMSTAGE
+	component MEMSTAGE is
 		port(
 			--Inputs
 			clk: in std_logic;
@@ -118,10 +124,13 @@ architecture data_path of DATAPATH is
 	signal sig_alu_out: std_logic_vector(31 downto 0);
 	signal sig_mem_out: std_logic_vector(31 downto 0);
 	signal sig_rf_a: std_logic_vector(31 downto 0);
-	signal sig_rf_b: std_logic_vector(31 downto 0);	
+	signal sig_rf_b: std_logic_vector(31 downto 0);
 	
 begin
-
+	
+	RF_A <= sig_rf_a;
+	RF_B <= sig_rf_b;
+	
 	if_stage: IFSTAGE port map(
 			PC_Immed => sig_immed,
 			PC_sel => PC_sel,
@@ -163,7 +172,7 @@ begin
 			MEM_WrEn => MEM_WrEn,
 			ByteOp => ByteOp,
 			ALU_MEM_Addr => sig_alu_out,
-			MEM_DataIn => sig_rf_a,	
+			MEM_DataIn => sig_rf_b,	
 			
 			MM_RdData => MM_RdData,
 
