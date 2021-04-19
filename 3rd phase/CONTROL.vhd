@@ -18,6 +18,8 @@
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use ieee.std_logic_unsigned.all;
+use ieee.numeric_std.all;
 
 entity CONTROL is
 	port(
@@ -46,8 +48,8 @@ begin
 	--PC_sel is '1' only for instructions 'b' , 'beq'(when RF(rs)==RF(rd)) and 'bne' (when RF(rs)!=RF(rd))
 	PC_sel_con <= '1' 
 		when( (Inst_in(31 downto 26) = "111111") or 
-			((Inst_in(31 downto 26) = "000000") and (RF_A_in = RF_B_in)) or 
-			((Inst_in(31 downto 26) = "000001") and (RF_A_in /= RF_B_in)))
+			((Inst_in(31 downto 26) = "000000") and (Inst_in(25 downto 21) = Inst_in(20 downto 16))) or 
+			((Inst_in(31 downto 26) = "000001") and (Inst_in(25 downto 21) /= Inst_in(20 downto 16))))
 			else '0';
 	
 	--PC_LdEn is always enabled
@@ -56,7 +58,7 @@ begin
 	--RF_WrData_sel is '0' when the instruction is ALU related
 	--and '1' when it is memory related
 	RF_WrData_sel_con <= '0' 
-		when( (Inst_in(31 downto 31) = '1') and (Inst_in(29 downto 29) = '0'))
+		when( (Inst_in(31) = '1') and (Inst_in(29) = '0'))
 			else '1';
 	
 	--RF_B_sel is '1' only when there is need to read the register RF[rd]
@@ -100,8 +102,9 @@ begin
 	--The ALU_func_con sets the function to be performed in the EXSTAGE by the ALU
 	ALU_func_con <= Inst_in(3 downto 0) when (Inst_in(31 downto 26)="100000") else
 						 --Immediate ALU operations
-						 "0000" when ((Inst_in(31 downto 26)="111000") 
-						 or (Inst_in(31 downto 26)="111001") or (Inst_in(31 downto 26)="110000")) else
+						 "0000" when ((Inst_in(31 downto 26)="111000") or (Inst_in(31 downto 26)="110000") or
+						 (Inst_in(31 downto 26)="111001") or (Inst_in(31 downto 26)="110000") or
+						 ((Inst_in(31)='0') and (Inst_in(26)='1'))) else
 						 "0101" when (Inst_in(31 downto 26)="110010") else
 						 "0011" when (Inst_in(31 downto 26)="110011");
 	
