@@ -1,0 +1,64 @@
+Running: /home/carioca/opt/14.7/ISE_DS/ISE/bin/lin64/unwrapped/fuse -relaunch -intstyle "ise" -incremental -lib "secureip" -o "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/PROC_SC_tb_isim_beh.exe" -prj "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/PROC_SC_tb_beh.prj" "work.PROC_SC_tb" 
+ISim P.20131013 (signature 0xfbc00daa)
+Number of CPUs detected in this system: 8
+Turning on mult-threading, number of parallel sub-compilation jobs: 16 
+Determining compilation order of HDL files
+Parsing VHDL file "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/regist.vhd" into library work
+Parsing VHDL file "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/mux_32to1.vhd" into library work
+Parsing VHDL file "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/decoder_5to32.vhd" into library work
+Parsing VHDL file "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/register_file.vhd" into library work
+Parsing VHDL file "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/mux_2to1_5bit.vhd" into library work
+Parsing VHDL file "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/mux_2to1.vhd" into library work
+Parsing VHDL file "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/incrementor_4.vhd" into library work
+Parsing VHDL file "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/immed_extender.vhd" into library work
+Parsing VHDL file "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/ALU.vhd" into library work
+Parsing VHDL file "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/adder.vhd" into library work
+Parsing VHDL file "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/MEMSTAGE.vhd" into library work
+Parsing VHDL file "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/IFSTAGE.vhd" into library work
+Parsing VHDL file "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/EXSTAGE.vhd" into library work
+Parsing VHDL file "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/DECSTAGE.vhd" into library work
+Parsing VHDL file "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/RAM.vhd" into library work
+Parsing VHDL file "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/DATAPATH.vhd" into library work
+Parsing VHDL file "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/CONTROL.vhd" into library work
+Parsing VHDL file "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/PROC_SC.vhd" into library work
+Parsing VHDL file "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/PROC_SC_tb.vhd" into library work
+Starting static elaboration
+WARNING:HDLCompiler:794 - "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/immed_extender.vhd" Line 45: Statement might not cover all choices ; 'others' clause recommended
+WARNING:HDLCompiler:794 - "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/mux_32to1.vhd" Line 71: Statement might not cover all choices ; 'others' clause recommended
+WARNING:HDLCompiler:794 - "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/ALU.vhd" Line 61: Statement might not cover all choices ; 'others' clause recommended
+Completed static elaboration
+Fuse Memory Usage: 97036 KB
+Fuse CPU Usage: 1770 ms
+Compiling package standard
+Compiling package std_logic_1164
+Compiling package numeric_std
+Compiling package std_logic_arith
+Compiling package std_logic_unsigned
+Compiling package textio
+Compiling package std_logic_textio
+Compiling architecture control_unit of entity CONTROL [control_default]
+Compiling architecture adder of entity incrementor_4 [incrementor_4_default]
+Compiling architecture adder of entity adder [adder_default]
+Compiling architecture multiplexer of entity mux_2to1 [mux_2to1_default]
+Compiling architecture regist of entity regist [regist_default]
+Compiling architecture if_stage of entity IFSTAGE [ifstage_default]
+Compiling architecture multiplexer of entity mux_2to1_5bit [mux_2to1_5bit_default]
+Compiling architecture extender of entity immed_extender [immed_extender_default]
+Compiling architecture decoder of entity decoder_5to32 [decoder_5to32_default]
+Compiling architecture multiplexer of entity mux_32to1 [mux_32to1_default]
+Compiling architecture register_file of entity register_file [register_file_default]
+Compiling architecture dec_stage of entity DECSTAGE [decstage_default]
+Compiling architecture alu of entity ALU [alu_default]
+Compiling architecture ex_stage of entity EXSTAGE [exstage_default]
+Compiling architecture mem_stage of entity MEMSTAGE [memstage_default]
+Compiling architecture data_path of entity DATAPATH [datapath_default]
+Compiling architecture ram of entity RAM [ram_default]
+Compiling architecture process_sc of entity PROC_SC [proc_sc_default]
+Compiling architecture behavior of entity proc_sc_tb
+Time Resolution for simulation is 1ps.
+Waiting for 1 sub-compilation(s) to finish...
+Compiled 44 VHDL Units
+Built simulation executable /home/carioca/Desktop/comp_arch_help/HPY302_LAB/PROC_SC_tb_isim_beh.exe
+Fuse Memory Usage: 1199088 KB
+Fuse CPU Usage: 2120 ms
+GCC CPU Usage: 510 ms

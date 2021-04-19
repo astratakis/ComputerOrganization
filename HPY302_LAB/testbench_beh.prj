@@ -1,0 +1,6 @@
+vhdl work "regist.vhd"
+vhdl work "mux_2to1.vhd"
+vhdl work "incrementor_4.vhd"
+vhdl work "adder.vhd"
+vhdl work "IFSTAGE.vhd"
+vhdl work "IFSTAGE_tb.vhd"

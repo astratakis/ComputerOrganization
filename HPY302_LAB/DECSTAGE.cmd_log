@@ -1,0 +1,5 @@
+xst -intstyle ise -ifn "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/DECSTAGE.xst" -ofn "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/DECSTAGE.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -bm mux_2to1_5bit.bmm -p xc7a100t-csg324-3 DECSTAGE.ngc DECSTAGE.ngd  
+map -intstyle ise -p xc7a100t-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -mt off -ir off -pr off -lc off -power off -o DECSTAGE_map.ncd DECSTAGE.ngd DECSTAGE.pcf 
+par -w -intstyle ise -ol high -mt off DECSTAGE_map.ncd DECSTAGE.ncd DECSTAGE.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml DECSTAGE.twx DECSTAGE.ncd -o DECSTAGE.twr DECSTAGE.pcf 
