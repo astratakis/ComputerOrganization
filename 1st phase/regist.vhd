@@ -38,19 +38,22 @@ end regist;
 
 architecture regist of regist is
 
+signal data: std_logic_vector(31 downto 0);
+
 begin
 	process
 	begin
 		wait until CLK' event and CLK = '1';	--wait for rising clock
 		
 		if RST = '1' then								--with enabled reset
-			Dataout <= x"00000000" after 10ns;	--the output is zero
+			data <= x"00000000";						--the output is zero
 		else
 			if WE = '1' then							--else and if write enable enabled
-				Dataout <= Datain after 10ns;		--read out the stored data
+				data <= Datain;						--read out the stored data
 			end if;
 		end if;
 	end process;
-
+	
+	Dataout <= data after 10ns;
 end regist;
 

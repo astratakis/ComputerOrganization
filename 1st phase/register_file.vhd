@@ -29,6 +29,7 @@ entity register_file is
 		Ard1: in std_logic_vector(4 downto 0);	--read address 1
 		Ard2: in std_logic_vector(4 downto 0);	--read address 2
 		Din: in std_logic_vector(31 downto 0);	--write input
+		RST: in std_logic;							--reset 
 		
 		--Outputs
 		Dout1: out std_logic_vector(31 downto 0);	--read output 1
@@ -141,7 +142,7 @@ begin
 				CLK => CLK,
 				Datain => Din,
 				WE => WriteEnable(i),
-				RST => '0',
+				RST => RST,
 				Dataout => DataoutArray(i)
 			);
 	end generate register_generator;

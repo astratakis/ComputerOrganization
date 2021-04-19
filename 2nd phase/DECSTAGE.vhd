@@ -30,6 +30,7 @@ entity DECSTAGE is
 		RF_B_sel	: in std_logic;
 		ImmExt	: in std_logic_vector(1 downto 0);
 		Clk		: in std_logic;
+		RST 		: in std_logic;
 		
 		--Outputs
 		Immed		: out std_logic_vector(31 downto 0);
@@ -88,6 +89,7 @@ architecture dec_stage of DECSTAGE is
 			Ard1:	 in std_logic_vector(4 downto 0);
 			Ard2:	 in std_logic_vector(4 downto 0);
 			Din:	 in std_logic_vector(31 downto 0);
+			RST:	 in std_logic;
 			
 			--Outputs
 			Dout1: out std_logic_vector(31 downto 0);
@@ -122,10 +124,11 @@ begin
 		
 	RF: register_file port map(
 		CLK => Clk,
-		WrEn => '1',
+		WrEn => RF_WrEn,
 		Awr => Instr(20 downto 16),
 		Ard1 => Instr(25 downto 21),
 		Ard2 => read_register_2,
+		RST => RST,
 		Din => RF_datain,
 		Dout1 => RF_A,
 		Dout2 => RF_B

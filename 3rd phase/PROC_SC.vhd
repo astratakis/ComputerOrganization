@@ -33,8 +33,8 @@ architecture process_sc of PROC_SC is
 	component CONTROL is
 		port(
 			Inst_in: in std_logic_vector(31 downto 0);
-			RF_A_in: in std_logic_vector(31 downto 0);
-			RF_B_in: in std_logic_vector(31 downto 0);
+			ALU_zero: in std_logic;
+			Reset: in std_logic;
 			
 			PC_Sel_con: out std_logic;
 			PC_LdEn_con: out std_logic;
@@ -71,9 +71,8 @@ architecture process_sc of PROC_SC is
 			PC: out std_logic_vector(31 downto 0);
 			MM_WrEn: out std_logic;
 			MM_Addr: out std_logic_vector(10 downto 0);
-			MM_WrData: out std_logic_vector(31 downto 0);
-			RF_A: out std_logic_vector(31 downto 0);
-			RF_B: out std_logic_vector(31 downto 0)
+			MM_WrData: out std_logic_vector(31 downto 0)
+		
 		);
 	end component;
 	--RAM
@@ -111,14 +110,15 @@ architecture process_sc of PROC_SC is
 	signal sig_MM_Addr: std_logic_vector(10 downto 0);
 	signal sig_MM_WrData: std_logic_vector(31 downto 0);
 	signal sig_PC: std_logic_vector(31 downto 0);
+	signal sig_ALU_zero: std_logic;
 	
 begin
 	
 	--CONTROL
 	control_unit: CONTROL port map(
 		Inst_in => sig_Instr,
-		RF_A_in => sig_RF_A,
-		RF_B_in => sig_RF_B,
+		ALU_zero => sig_ALU_zero,
+		Reset => Reset,
 		
 		PC_Sel_con => sig_PC_Sel,
 		PC_LdEn_con => sig_PC_LdEn,
@@ -149,13 +149,11 @@ begin
 		ByteOp => sig_ByteOp,
 		MEM_WrEn => sig_MEM_WrEn,
 			
-		ALU_zero => open,
+		ALU_zero => sig_ALU_zero,
 		PC => sig_PC,
 		MM_WrEn => sig_MM_WrEn,
 		MM_Addr => sig_MM_Addr,
-		MM_WrData => sig_MM_WrData,
-		RF_A => sig_RF_A,
-		RF_B => sig_RF_B
+		MM_WrData => sig_MM_WrData
 	);
 
 	--RAM

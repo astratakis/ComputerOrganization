@@ -39,9 +39,7 @@ entity DATAPATH is
 		PC: out std_logic_vector(31 downto 0);
 		MM_WrEn: out std_logic;
 		MM_Addr: out std_logic_vector(10 downto 0);
-		MM_WrData: out std_logic_vector(31 downto 0);
-		RF_A: out std_logic_vector(31 downto 0);
-		RF_B: out std_logic_vector(31 downto 0)
+		MM_WrData: out std_logic_vector(31 downto 0)
 	);
 	
 end DATAPATH;
@@ -75,6 +73,7 @@ architecture data_path of DATAPATH is
 			RF_B_sel	: in std_logic;
 			ImmExt	: in std_logic_vector(1 downto 0);
 			Clk		: in std_logic;
+			RST		: in std_logic;
 			
 			--Outputs
 			Immed		: out std_logic_vector(31 downto 0);
@@ -128,9 +127,6 @@ architecture data_path of DATAPATH is
 	
 begin
 	
-	RF_A <= sig_rf_a;
-	RF_B <= sig_rf_b;
-	
 	if_stage: IFSTAGE port map(
 			PC_Immed => sig_immed,
 			PC_sel => PC_sel,
@@ -150,6 +146,7 @@ begin
 			RF_B_sel => RF_B_sel,
 			ImmExt => ImmExt,
 			Clk => Clk,
+			RST => Reset,
 			
 			Immed => sig_immed,
 			RF_A => sig_rf_a,

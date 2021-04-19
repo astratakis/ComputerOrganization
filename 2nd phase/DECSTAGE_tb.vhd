@@ -36,6 +36,7 @@
 			RF_B_sel	: in std_logic;
 			ImmExt	: in std_logic_vector(1 downto 0);
 			Clk		: in std_logic;
+			RST		: in std_logic;
 			
 			--Outputs
 			Immed		: out std_logic_vector(31 downto 0);
@@ -55,6 +56,7 @@
 			signal Immed		: std_logic_vector(31 downto 0);
 			signal RF_A			: std_logic_vector(31 downto 0);
 			signal RF_B			: std_logic_vector(31 downto 0);
+			signal RST			: std_logic;
           
 
   BEGIN
@@ -72,7 +74,8 @@
 					Clk => Clk,
 					Immed => Immed,
 					RF_A => RF_A,
-					RF_B => RF_B
+					RF_B => RF_B,
+					RST => RST
           );
 
 
