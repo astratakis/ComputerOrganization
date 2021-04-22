@@ -27,8 +27,8 @@ WARNING:HDLCompiler:794 - "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/immed
 WARNING:HDLCompiler:794 - "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/mux_32to1.vhd" Line 71: Statement might not cover all choices ; 'others' clause recommended
 WARNING:HDLCompiler:794 - "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/ALU.vhd" Line 61: Statement might not cover all choices ; 'others' clause recommended
 Completed static elaboration
-Fuse Memory Usage: 97036 KB
-Fuse CPU Usage: 1770 ms
+Fuse Memory Usage: 96936 KB
+Fuse CPU Usage: 1210 ms
 Compiling package standard
 Compiling package std_logic_1164
 Compiling package numeric_std
@@ -60,5 +60,5 @@ Waiting for 1 sub-compilation(s) to finish...
 Compiled 44 VHDL Units
 Built simulation executable /home/carioca/Desktop/comp_arch_help/HPY302_LAB/PROC_SC_tb_isim_beh.exe
 Fuse Memory Usage: 1199088 KB
-Fuse CPU Usage: 2120 ms
-GCC CPU Usage: 510 ms
+Fuse CPU Usage: 1370 ms
+GCC CPU Usage: 170 ms

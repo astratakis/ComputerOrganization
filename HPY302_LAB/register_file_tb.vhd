@@ -57,9 +57,17 @@
   --  Test Bench Statements
      tb : PROCESS
      BEGIN
+		Ard1 <= "00001";
+		Ard2 <= "00001";
+		Awr <= "00001";
+		Din <= x"ffff_ffff";
 		
 		RST <= '1';
 		wait for 200 ns; -- wait until global set/reset completes
+		
+		WrEn <= '1';
+		
+		wait for 200 ns;
 		
 		RST <= '0';
 		

@@ -45,18 +45,18 @@
 			);
 	end component;
 
-         signal Instr		: std_logic_vector(31 downto 0);
-			signal RF_WrEn		: std_logic;
-			signal ALU_out		: std_logic_vector(31 downto 0);
-			signal MEM_out		: std_logic_vector(31 downto 0);
-			signal RF_WrData_sel: std_logic;
-			signal RF_B_sel	: std_logic;
-			signal ImmExt		: std_logic_vector(1 downto 0);
-			signal Clk			: std_logic;
-			signal Immed		: std_logic_vector(31 downto 0);
-			signal RF_A			: std_logic_vector(31 downto 0);
-			signal RF_B			: std_logic_vector(31 downto 0);
-			signal RST			: std_logic;
+         signal Instr		: std_logic_vector(31 downto 0) := (others => '0');
+			signal RF_WrEn		: std_logic := '0';
+			signal ALU_out		: std_logic_vector(31 downto 0) := (others => '0');
+			signal MEM_out		: std_logic_vector(31 downto 0) := (others => '0');
+			signal RF_WrData_sel: std_logic := '0';
+			signal RF_B_sel	: std_logic := '0';
+			signal ImmExt		: std_logic_vector(1 downto 0) := (others => '0');
+			signal Clk			: std_logic := '0';
+			signal Immed		: std_logic_vector(31 downto 0) := (others => '0');
+			signal RF_A			: std_logic_vector(31 downto 0) := (others => '0');
+			signal RF_B			: std_logic_vector(31 downto 0) := (others => '0');
+			signal RST			: std_logic := '0';
           
 
   BEGIN
@@ -82,10 +82,129 @@
   --  Test Bench Statements
      tb : PROCESS
      BEGIN
-			wait for 10 ns;
 			
+			-- Reset Register File
+			RST <= '1';
+			Instr <= b"000000_00000_00000_00000_00000_000000";
+			wait for 200 ns;
+			
+			RST <= '0';
+			
+			----- TESTING IMMEXT ------
+			
+			-- Zero-fill
+			Instr	<= b"000000_00000_00000_00000_00000_011111"; 
+			RF_WrEn <= '0';
+			ALU_out <= x"0000_abcd";
+			MEM_out <= x"0000_dcba";
+			RF_WrData_sel <= '0';
+			RF_B_sel	<= '0';
+			ImmExt <= "00";
+			wait for 200 ns;
+			
+			-- Zero-fill and shift
+			Instr	<= b"000000_00000_00000_00000_00000_011111"; 
+			RF_WrEn <= '0';
+			ALU_out <= x"0000_abcd";
+			MEM_out <= x"0000_dcba";
+			RF_WrData_sel <= '0';
+			RF_B_sel	<= '0';
+			ImmExt <= "01";
+			wait for 200 ns;
+			
+			-- Sign-extend
+			Instr	<= b"000000_00000_00000_11111_11111_100000"; 
+			RF_WrEn <= '0';
+			ALU_out <= x"0000_abcd";
+			MEM_out <= x"0000_dcba";
+			RF_WrData_sel <= '0';
+			RF_B_sel	<= '0';
+			ImmExt <= "10";
+			wait for 200 ns;
+			
+			-- Sign-extend and shift
+			Instr	<= b"000000_00000_00000_11111_11111_100000"; 
+			RF_WrEn <= '0';
+			ALU_out <= x"0000_abcd";
+			MEM_out <= x"0000_dcba";
+			RF_WrData_sel <= '0';
+			RF_B_sel	<= '0';
+			ImmExt <= "11";
+			wait for 200 ns;
+			
+			-- Try to write R0 which isn't possible
+			Instr	<= b"000000_00000_00000_00000_00000_000000"; 
+			RF_WrEn <= '1';
+			ALU_out <= x"0000_abcd";
+			MEM_out <= x"0000_dcba";
+			RF_WrData_sel <= '0';
+			RF_B_sel	<= '1';
+			ImmExt <= "00";
+			wait for 200 ns;
+			
+			-- Write from ALU_out in R2 and reading 
+			Instr	<= b"000000_00010_00010_00000_00000_000000"; 
+			RF_WrEn <= '1';
+			ALU_out <= x"0000_abcd";
+			MEM_out <= x"0000_dcba";
+			RF_WrData_sel <= '0';
+			RF_B_sel	<= '1';
+			ImmExt <= "00";
+			wait for 200 ns;			
+			
+			-- Don't write from MEM_out in R2 and read
+			Instr	<= b"000000_00010_00010_00000_00000_000000"; 
+			RF_WrEn <= '0';
+			ALU_out <= x"0000_abcd";
+			MEM_out <= x"0000_dcba";
+			RF_WrData_sel <= '1';
+			RF_B_sel	<= '1';
+			ImmExt <= "00";
+			wait for 200 ns;
 
+			-- Write and read from MEM_out in R3
+			Instr	<= b"000000_00010_00011_00000_00000_000000"; 
+			RF_WrEn <= '1';
+			ALU_out <= x"0000_abcd";
+			MEM_out <= x"0000_dcba";
+			RF_WrData_sel <= '1';
+			RF_B_sel	<= '1';
+			ImmExt <= "00";
+			wait for 200 ns;
+			
+			-- Write R4 from ALU_out and read R2 and R3
+			Instr	<= b"000000_00010_00100_00011_00000_000000"; 
+			RF_WrEn <= '1';
+			ALU_out <= x"0000_abcd";
+			MEM_out <= x"0000_dcba";
+			RF_WrData_sel <= '0';
+			RF_B_sel	<= '0';
+			ImmExt <= "00";
+			wait for 200 ns;
+			
+			-- Write R4 from ALU_out and read R2 and R3
+			Instr	<= b"000000_00010_00100_00011_00000_000000"; 
+			RF_WrEn <= '1';
+			ALU_out <= x"0000_abcd";
+			MEM_out <= x"0000_dcba";
+			RF_WrData_sel <= '0';
+			RF_B_sel	<= '0';
+			ImmExt <= "00";
+			wait for 200 ns;
+			
+			-- Read R3 and R4
+			Instr	<= b"000000_00011_00100_00100_00000_000000"; 
+			RF_WrEn <= '0';
+			ALU_out <= x"0000_abcd";
+			MEM_out <= x"0000_dcba";
+			RF_WrData_sel <= '0';
+			RF_B_sel	<= '0';
+			ImmExt <= "00";
+			wait for 200 ns;
         wait; -- will wait forever
+        wait; -- will wait forever
+		  
+		  
      END PROCESS tb;
   --  End Test Bench 
 

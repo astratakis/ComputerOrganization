@@ -57,7 +57,7 @@ ARCHITECTURE behavior OF MEMSTAGE_tb IS
  
 BEGIN
  
-	clk <= not clock after 100ns;
+	clk <= not clk after 100ns;
 	
 	-- Instantiate the Unit Under Test (UUT)
    uut: MEMSTAGE PORT MAP (
@@ -77,9 +77,40 @@ BEGIN
    stim_proc: process
    begin		
       
-		wait for 20 ns;
+		-- Try to write with write disabled
+		MEM_WrEn <= '0';
+		ByteOp <= '0';
+		ALU_MEM_Addr <= x"0000_0004";
+		MEM_DataIn <= x"12e0_3415";
+		wait for 200 ns;
 		
-
+		-- Write and read word in word address 1025 
+		MEM_WrEn <= '1';
+		ByteOp <= '0';
+		ALU_MEM_Addr <= x"0000_0004";
+		MEM_DataIn <= x"12e0_3415";			
+		wait for 200 ns;
+		
+		-- Write and read byte in word address 1026 
+		MEM_WrEn <= '1';
+		ByteOp <= '1';
+		ALU_MEM_Addr <= x"0000_0008";
+		MEM_DataIn <= x"12e0_3415";			
+		wait for 200 ns; 
+		
+		-- Read word
+		MEM_WrEn <= '0';
+		ByteOp <= '0';
+		ALU_MEM_Addr <= x"0000_000c";
+		MM_RdData <= x"12e0_5678";		
+		wait for 200 ns;
+		
+		-- Read byte
+		MEM_WrEn <= '0';
+		ByteOp <= '1';
+		ALU_MEM_Addr <= x"0000_0010";
+		MM_RdData <= x"12e0_5678";		
+		wait for 200 ns;		
       wait;
    end process;
 

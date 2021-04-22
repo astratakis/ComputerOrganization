@@ -21,7 +21,7 @@
 		signal Reset: std_logic := '0';
 
   BEGIN
-		Clk <= not Clk after 150 ns;
+		Clk <= not Clk after 100 ns;
   -- Component Instantiation
           uut: PROC_SC PORT MAP(
                   Reset => Reset,
@@ -33,7 +33,7 @@
      tb : PROCESS
      BEGIN
 		Reset <= '1';
-		wait for 410 ns;
+		wait for 400 ns;
 		
 		Reset <= '0';
 

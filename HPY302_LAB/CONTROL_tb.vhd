@@ -38,8 +38,8 @@ ARCHITECTURE behavior OF CONTROL_tb IS
     COMPONENT CONTROL
     PORT(
          Inst_in : IN  std_logic_vector(31 downto 0);
-         RF_A_in : IN  std_logic_vector(31 downto 0);
-         RF_B_in : IN  std_logic_vector(31 downto 0);
+			ALU_zero: in std_logic;
+			Reset: in std_logic;
          PC_Sel_con : OUT  std_logic;
          PC_LdEn_con : OUT  std_logic;
          RF_WrData_sel_con : OUT  std_logic;
@@ -56,8 +56,8 @@ ARCHITECTURE behavior OF CONTROL_tb IS
 
    --Inputs
    signal Inst_in : std_logic_vector(31 downto 0) := (others => '0');
-   signal RF_A_in : std_logic_vector(31 downto 0) := (others => '0');
-   signal RF_B_in : std_logic_vector(31 downto 0) := (others => '0');
+	signal ALU_zero: std_logic;
+	signal Reset: std_logic;
 
  	--Outputs
    signal PC_Sel_con : std_logic;
@@ -77,8 +77,8 @@ BEGIN
 	-- Instantiate the Unit Under Test (UUT)
    uut: CONTROL PORT MAP (
           Inst_in => Inst_in,
-          RF_A_in => RF_A_in,
-          RF_B_in => RF_B_in,
+			 ALU_zero => ALU_zero,
+			 Reset => Reset,
           PC_Sel_con => PC_Sel_con,
           PC_LdEn_con => PC_LdEn_con,
           RF_WrData_sel_con => RF_WrData_sel_con,
@@ -97,84 +97,119 @@ BEGIN
    -- Stimulus process
    stim_proc: process
    begin		
-      -- hold reset state for 100 ns.
-      wait for 10 ns;	
+	
+		-- Reset
+		Inst_in <= b"100000_00000000000000000000_110000";
+		Reset <= '1';
+		wait for 50 ns;
 		
+		Reset <= '0';
+		
+		-- add
 		Inst_in <= b"100000_00000000000000000000_110000";
 		wait for 50 ns;
-
+		
+		-- sub
 		Inst_in <= b"100000_00000000000000000000_110001";
 		wait for 50 ns;
 		
+		-- and
 		Inst_in <= b"100000_00000000000000000000_110010";
 		wait for 50 ns;
 		
+		-- or
 		Inst_in <= b"100000_00000000000000000000_110011";
 		wait for 50 ns;
 		
+		--not
 		Inst_in <= b"100000_00000000000000000000_110100";
 		wait for 50 ns;
 		
+		-- nand
 		Inst_in <= b"100000_00000000000000000000_110101";
 		wait for 50 ns;
 		
+		-- nor
 		Inst_in <= b"100000_00000000000000000000_110110";
 		wait for 50 ns;
 		
+		-- sra
 		Inst_in <= b"100000_00000000000000000000_111000";
 		wait for 50 ns;
 		
+		-- srl
 		Inst_in <= b"100000_00000000000000000000_111001";
 		wait for 50 ns;
 		
+		-- sll
 		Inst_in <= b"100000_00000000000000000000_111010";
 		wait for 50 ns;
 		
+		-- rol
 		Inst_in <= b"100000_00000000000000000000_111100";
 		wait for 50 ns;
 		
+		-- ror
 		Inst_in <= b"100000_00000000000000000000_111101";
 		wait for 50 ns;
 		
+		-- li
 		Inst_in <= b"111000_00000000000000000000_000000";
 		wait for 50 ns;
 		
+		-- lui
 		Inst_in <= b"111001_00000000000000000000_000000";
 		wait for 50 ns;
 		
+		-- addi
 		Inst_in <= b"110000_00000000000000000000_000000";
 		wait for 50 ns;
 		
+		-- nandi
 		Inst_in <= b"110010_00000000000000000000_000000";
 		wait for 50 ns;
 		
+		-- ori
 		Inst_in <= b"110011_00000000000000000000_000000";
 		wait for 50 ns;
 		
+		-- b
 		Inst_in <= b"111111_00000000000000000000_000000";
 		wait for 50 ns;
 		
+		-- beq and RF[rs] == RF [rd]
+		ALU_zero <= '1';
 		Inst_in <= b"000000_00000000000000000000_000000";
 		wait for 50 ns;
 		
-		Inst_in <= b"000000_00001000000000000000_000000";
+		-- beq and RF[rs] != RF [rd]
+		ALU_zero <= '0';
+		Inst_in <= b"000000_00000000000000000000_000000";
 		wait for 50 ns;
 		
-		Inst_in <= b"000001_00001000000000000000_000000";
-		wait for 50 ns;
-		
+		-- bne and RF[rs] != RF [rd]
+		ALU_zero <= '0';
 		Inst_in <= b"000001_00000000000000000000_000000";
 		wait for 50 ns;
 		
+		-- bne and RF[rs] == RF [rd]
+		ALU_zero <= '1';
+		Inst_in <= b"000001_00000000000000000000_000000";
+		wait for 50 ns;
+		
+		-- lb
 		Inst_in <= b"000011_00000000000000000000_000000";
 		wait for 50 ns;
 		
+		-- sb
 		Inst_in <= b"000111_00000000000000000000_000000";
 		wait for 50 ns;
 		
+		-- lw
 		Inst_in <= b"001111_00000000000000000000_000000";
 		wait for 50 ns;
 		
+		-- sw
 		Inst_in <= b"011111_00000000000000000000_000000";
 		wait for 50 ns;
 		

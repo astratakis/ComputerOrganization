@@ -88,7 +88,6 @@ signal data_in_PC: std_logic_vector(31 downto 0); 	--PC input / mux output
 signal data_out_PC: std_logic_vector(31 downto 0); --PC output
 signal increm_out: std_logic_vector(31 downto 0); 	--incrementor output
 signal adder_out: std_logic_vector(31 downto 0); 	--adder output
-signal immedX4: std_logic_vector(31 downto 0);		--immed multiplied by 4
 
 begin	
 	--Output PC is equal to the output of the PC register

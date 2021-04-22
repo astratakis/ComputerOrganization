@@ -43,7 +43,7 @@ static void work_a_1771943862_2372691052_p_0(char *t0)
 
 LAB0:    xsi_set_current_line(24, ng0);
 
-LAB3:    t1 = (150 * 1000LL);
+LAB3:    t1 = (100 * 1000LL);
     t2 = (t0 + 1032U);
     t3 = *((char **)t2);
     t4 = *((unsigned char *)t3);
@@ -92,7 +92,7 @@ LAB2:    xsi_set_current_line(35, ng0);
     *((unsigned char *)t6) = (unsigned char)3;
     xsi_driver_first_trans_fast(t2);
     xsi_set_current_line(36, ng0);
-    t7 = (410 * 1000LL);
+    t7 = (400 * 1000LL);
     t2 = (t0 + 2400);
     xsi_process_wait(t2, t7);
 

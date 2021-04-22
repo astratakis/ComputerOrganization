@@ -49,7 +49,7 @@ begin
 	
 	-- If Reset is enabled don't run the first instruction
 	sig_inst <= Inst_in when Reset = '0' else
-					x"0000_0000" when Reset = '1';
+					"--------------------------------" when Reset = '1';
 	
 	
 	--PC_sel is '1' only for instructions 'b' , 'beq'(when RF(rs)==RF(rd)) and 'bne' (when RF(rs)!=RF(rd))
@@ -65,7 +65,7 @@ begin
 	--RF_WrData_sel is '0' when the instruction is ALU related
 	--and '1' when it is memory related
 	RF_WrData_sel_con <= '0' 
-		when( (sig_inst(31) = '1') and (sig_inst(29) = '0'))
+		when( (sig_inst(31 downto 26) = "100000") or (sig_inst(31 downto 30) = "11"))
 			else '1';
 	
 	--RF_B_sel is '1' only when there is need to read the register RF[rd]
@@ -103,7 +103,8 @@ begin
 						     		 (sig_inst(31 downto 26)="000001"));
 	
 	--ALU_Bin_sel is '0' when ALU is used without immediate
-	ALU_Bin_sel_con <= '0' when (sig_inst(31 downto 26)="100000")
+	ALU_Bin_sel_con <= '0' when (sig_inst(31 downto 26)="100000") or (sig_inst(31 downto 26)="000000") or 
+							(sig_inst(31 downto 26)="000001")
 							else '1';
 	
 	--The ALU_func_con sets the function to be performed in the EXSTAGE by the ALU
@@ -111,7 +112,8 @@ begin
 						 --Immediate ALU operations
 						 "0000" when ((sig_inst(31 downto 26)="111000") or (sig_inst(31 downto 26)="110000") or
 						 (sig_inst(31 downto 26)="111001") or (sig_inst(31 downto 26)="110000") or
-						 ((sig_inst(31)='0') and (sig_inst(26)='1'))) else
+						 ((sig_inst(31)='0') and (sig_inst(27 downto 26)="11"))) else
+						 "0001" when (sig_inst(31 downto 26)="000000") or (sig_inst(31 downto 26)="000001") else
 						 "0101" when (sig_inst(31 downto 26)="110010") else
 						 "0011" when (sig_inst(31 downto 26)="110011");
 	

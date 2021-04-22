@@ -57,7 +57,10 @@
 			wait for 100 ns;
 			
 			--1 - 1 = 0
-			ALU_Bin_sel <= '1';
+			RF_A <= x"0000_0001";
+			RF_B <= x"0000_0002";
+			Immed <= x"0000_0001";
+			ALU_Bin_sel <= '0';
 			ALU_func <= "0001";
 			wait for 100 ns;
 			

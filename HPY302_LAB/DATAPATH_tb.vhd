@@ -38,7 +38,7 @@
 			signal PC_Sel: std_logic;
 			signal PC_LdEn: std_logic;
 			signal Reset: std_logic;
-			signal Clk: std_logic;
+			signal Clk: std_logic := '0';
 			signal RF_WrEn: std_logic;
 			signal RF_WrData_sel: std_logic;
 			signal RF_B_sel: std_logic;
@@ -58,6 +58,7 @@
           
 
   BEGIN
+		
 		
   -- Component Instantiation
           uut: DATAPATH PORT MAP(
@@ -82,16 +83,146 @@
 				MM_Addr => MM_Addr,
 				MM_WrData => MM_WrData
 			);
+			
+		Clk <= not Clk after 100 ns;
 
 
   --  Test Bench Statements
      tb : PROCESS
      BEGIN
 
-        wait for 100 ns; -- wait until global set/reset completes
+        Reset <= '1';
+        wait for 200 ns;
+		  
+        Reset <= '0';
+        
+        -- addi r5, r0, 8
+        PC_Sel <= '0';
+        PC_LdEn <= '1';
+        RF_WrEn <= '1';
+        RF_WrData_sel <= '0'; 
+        RF_B_sel <= '0';
+        ImmExt <= "00";             
+        ALU_Bin_sel <= '1';            
+        ALU_func <= "0000";              
+        MEM_WrEn <= '0';
+        ByteOp <= '0';
+        Instr <= "11000000000001010000000000001000";
+        wait for 200 ns;
+        
+        -- ori r3, r0, x"abcd"
+        PC_Sel <= '0';
+        PC_LdEn <= '1';
+        RF_WrEn <= '1';
+        RF_WrData_sel <= '0'; 
+        RF_B_sel <= '0';
+        ImmExt <= "00";            
+        ALU_Bin_sel <= '1';             
+        ALU_func <= "0011";               
+        MEM_WrEn <= '0';
+        ByteOp <= '0';
+        Instr <= "11001100000000111010101111001101";
+        wait for 200 ns;
+        
+        -- sw r3, 4(r0)
+        PC_Sel <= '0';
+        PC_LdEn <= '1';
+        RF_WrEn <= '0';
+        RF_WrData_sel <= '1';
+        RF_B_sel <= '1';
+        ImmExt <= "01";
+        ALU_Bin_sel <= '1'; 
+        ALU_func <= "0000";
+        MEM_WrEn <= '1';
+        ByteOp <= '0';
+        Instr <= "01111100000000110000000000000100";
+        wait for 200 ns;
+        
+        -- lw r10, -4(r5)
+        PC_Sel <= '0';
+        PC_LdEn <= '1';
+        RF_WrEn <= '1';
+        RF_WrData_sel <= '1';
+        RF_B_sel <= '0';
+        ImmExt <= "01";
+        ALU_Bin_sel <= '1';    
+        ALU_func <= "0000";
+        MEM_WrEn <= '0';
+        ByteOp <= '0';
+        MM_RdData <= x"0000abcd";
+        Instr <= "00111100101010101111111111111100";
+        wait for 200 ns;
+        
+        -- lb r16 4(r0)
+        PC_Sel <= '0';
+        PC_LdEn <= '1';
+        RF_WrEn <= '1';
+        RF_WrData_sel <= '1';
+        RF_B_sel <= '0';
+        ImmExt <= "01";
+        ALU_Bin_sel <= '1';
+        ALU_func <= "0000";
+        MEM_WrEn <= '0';
+        ByteOp <= '1';
+        MM_RdData <= x"0000abcd";
+        Instr <= "00001100000100000000000000000100";
+        wait for 200 ns;
+        
+        -- nand r4, r0, r16
+        PC_Sel <= '0';
+        PC_LdEn <= '1';
+        RF_WrEn <= '1';
+        RF_WrData_sel <= '0'; 
+        RF_B_sel <= '0';
+        ImmExt <= "00";
+        ALU_Bin_sel <= '0';
+        ALU_func <= "0101";
+        MEM_WrEn <= '0';
+        ByteOp <= '0';
+        Instr <= "10000001010001001000000000110101";
+        wait for 200 ns;
+		  
+        -- bne r5, r5, 8
+        PC_Sel <= '0';
+        PC_LdEn <= '1';
+        RF_WrEn <= '0';
+        RF_WrData_sel <= '1'; 
+        RF_B_sel <= '0';
+        ImmExt <= "11";
+        ALU_Bin_sel <= '0';
+        ALU_func <= "0001";
+        MEM_WrEn <= '0';
+        ByteOp <= '0';
+        Instr <= "00000100101001010000000000001000";
+		  wait for 200 ns;
+		  
+        -- b -2
+        PC_Sel <= '1';
+        PC_LdEn <= '1';
+        RF_WrEn <= '0';
+        RF_WrData_sel <= '0'; 
+        RF_B_sel <= '0';
+        ImmExt <= "11";
+        ALU_Bin_sel <= '0';
+        ALU_func <= "0000";
+        MEM_WrEn <= '0';
+        ByteOp <= '0';
+        Instr <= "11111100000000001111111111111110";
+		  wait for 200 ns;
 
-        -- Add user defined stimulus here
-
+        -- addi r1, r0, 1
+        PC_Sel <= '0';
+        PC_LdEn <= '1';
+        RF_WrEn <= '0';
+        RF_WrData_sel <= '0'; 
+        RF_B_sel <= '0';
+        ImmExt <= "00";
+        ALU_Bin_sel <= '0';
+        ALU_func <= "0101";
+        MEM_WrEn <= '0';
+        ByteOp <= '0';
+        Instr <= "11000000000000010000000000000001";
+		  
         wait; -- will wait forever
      END PROCESS tb;
   --  End Test Bench 

@@ -61,7 +61,7 @@ architecture ram of RAM is
 	end function;
 	
 	--Call the function above
-	signal RAM: ram_type := InitRamFromFile("report1.data");
+	signal RAM: ram_type := InitRamFromFile("report2.data");
 	
 begin
 	process (clk)

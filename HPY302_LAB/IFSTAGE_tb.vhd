@@ -54,27 +54,39 @@
      BEGIN
 
 			wait for 20 ns; -- wait until global set/reset completes
+			
+			-- Reset PC value from 'U' to '0' 
+			Reset <= '1';
+			wait for 100 ns;
+			
+			-- Increment PC starting from '0' until '12' 
 			PC_sel <= '0';
 			PC_LdEn <= '1';
 			Reset <= '0';
 			PC_Immed <= x"0000_1000";
-			wait for 500 ns;
+			wait for 600 ns;
 			
-			PC_LdEn <= '0';
-			wait for 100 ns;
-			
+			-- Reset PC value to '0'
 			Reset <= '1';
-			wait for 100 ns;
+			wait for 200 ns;
 			
-			PC_LdEn <= '1';
+			-- Disable Reset
+			-- Increment PC from '0' to '8'
 			Reset <= '0';
-			wait for 300 ns;
+			wait for 400 ns;
 			
+			-- Select immediate value x"0000_1000"
 			PC_sel <= '1';
-			wait for 100ns;
+			wait for 200ns;
 			
+			-- Increment PC from x"0000_100c" to x"0000_1014"
 			PC_sel <= '0';
+			wait for 400 ns;
+			
+			-- Stop incrementing
+			PC_LdEn <= '0';
 			wait; -- will wait forever
+			
      END PROCESS tb;
   --  End Test Bench 
 

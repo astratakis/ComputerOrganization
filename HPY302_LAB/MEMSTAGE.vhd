@@ -58,12 +58,10 @@ architecture mem_stage of MEMSTAGE is
 	signal store_byte: std_logic_vector(31 downto 0);
 	signal load_byte: std_logic_vector(31 downto 0);
 	signal added_1024: std_logic_vector(31 downto 0);
-	signal mult_4: std_logic_vector(31 downto 0);
 begin
 	
-	added_1024 <= ALU_MEM_Addr + x"400";	--add 1024 to enter data part of RAM
-	mult_4 <= added_1024(29 downto 0) & "00";
-	MM_Addr <= mult_4(12 downto 2);		--32-bit to 11-bit while multiplying by 4
+	added_1024 <= ALU_MEM_Addr + x"0000_1000";	--add 1024 x 4 = 4096 to enter data part of RAM
+	MM_Addr <= added_1024(12 downto 2);				--32-bit to 11-bit while multiplying by 4
 	MM_WrEn <= MEM_WrEn;
 	store_byte <= std_logic_vector(resize(unsigned(MEM_DataIn(7 downto 0)),32));	--zero fill to store byte
 	load_byte <= std_logic_vector(resize(unsigned(MM_RdData(7 downto 0)),32));		--zero fill to load byte
