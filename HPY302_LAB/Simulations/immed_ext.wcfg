@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="/home/carioca/Desktop/comp_arch_help/HPY302_LAB/immed_extender_tb_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="immed_extender_tb" />
+            <top_module name="numeric_std" />
+            <top_module name="std_logic_1164" />
+            <top_module name="std_logic_arith" />
+            <top_module name="std_logic_unsigned" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="3" />
+   <wvobject fp_name="/immed_extender_tb/sel" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">sel[1:0]</obj_property>
+      <obj_property name="ObjectShortName">sel[1:0]</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#ffff00</obj_property>
+   </wvobject>
+   <wvobject fp_name="/immed_extender_tb/immed" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">immed[15:0]</obj_property>
+      <obj_property name="ObjectShortName">immed[15:0]</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/immed_extender_tb/immextended" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">immextended[31:0]</obj_property>
+      <obj_property name="ObjectShortName">immextended[31:0]</obj_property>
+   </wvobject>
+</wave_config>

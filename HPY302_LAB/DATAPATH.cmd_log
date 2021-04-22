@@ -1,0 +1,3 @@
+xst -intstyle ise -ifn "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/DATAPATH.xst" -ofn "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/DATAPATH.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -bm mux_2to1_5bit.bmm -p xc7a100t-csg324-3 DATAPATH.ngc DATAPATH.ngd  
+map -intstyle ise -p xc7a100t-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -mt off -ir off -pr off -lc off -power off -o DATAPATH_map.ncd DATAPATH.ngd DATAPATH.pcf 

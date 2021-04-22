@@ -1,0 +1,770 @@
+Release 14.7 - xst P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 3.00 secs
+Total CPU time to Xst completion: 0.10 secs
+ 
+--> 
+Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 3.00 secs
+Total CPU time to Xst completion: 0.10 secs
+ 
+--> 
+Reading design: DATAPATH.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "DATAPATH.prj"
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "DATAPATH"
+Output Format                      : NGC
+Target Device                      : xc7a100t-3-csg324
+
+---- Source Options
+Top Module Name                    : DATAPATH
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Shift Register Extraction          : YES
+ROM Style                          : Auto
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Shift Register Minimum Size        : 2
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 32
+Register Duplication               : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Parsing VHDL file "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/regist.vhd" into library work
+Parsing entity <regist>.
+Parsing architecture <regist> of entity <regist>.
+Parsing VHDL file "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/mux_32to1.vhd" into library work
+Parsing entity <mux_32to1>.
+Parsing architecture <multiplexer> of entity <mux_32to1>.
+Parsing VHDL file "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/decoder_5to32.vhd" into library work
+Parsing entity <decoder_5to32>.
+Parsing architecture <decoder> of entity <decoder_5to32>.
+Parsing VHDL file "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/register_file.vhd" into library work
+Parsing entity <register_file>.
+Parsing architecture <register_file> of entity <register_file>.
+Parsing VHDL file "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/mux_2to1_5bit.vhd" into library work
+Parsing entity <mux_2to1_5bit>.
+Parsing architecture <multiplexer> of entity <mux_2to1_5bit>.
+Parsing VHDL file "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/mux_2to1.vhd" into library work
+Parsing entity <mux_2to1>.
+Parsing architecture <multiplexer> of entity <mux_2to1>.
+Parsing VHDL file "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/incrementor_4.vhd" into library work
+Parsing entity <incrementor_4>.
+Parsing architecture <adder> of entity <incrementor_4>.
+Parsing VHDL file "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/immed_extender.vhd" into library work
+Parsing entity <immed_extender>.
+Parsing architecture <extender> of entity <immed_extender>.
+Parsing VHDL file "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/ALU.vhd" into library work
+Parsing entity <ALU>.
+Parsing architecture <alu> of entity <alu>.
+Parsing VHDL file "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/adder.vhd" into library work
+Parsing entity <adder>.
+Parsing architecture <adder> of entity <adder>.
+Parsing VHDL file "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/MEMSTAGE.vhd" into library work
+Parsing entity <MEMSTAGE>.
+Parsing architecture <mem_stage> of entity <memstage>.
+Parsing VHDL file "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/IFSTAGE.vhd" into library work
+Parsing entity <IFSTAGE>.
+Parsing architecture <if_stage> of entity <ifstage>.
+Parsing VHDL file "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/EXSTAGE.vhd" into library work
+Parsing entity <EXSTAGE>.
+Parsing architecture <ex_stage> of entity <exstage>.
+Parsing VHDL file "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/DECSTAGE.vhd" into library work
+Parsing entity <DECSTAGE>.
+Parsing architecture <dec_stage> of entity <decstage>.
+Parsing VHDL file "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/DATAPATH.vhd" into library work
+Parsing entity <DATAPATH>.
+Parsing architecture <data_path> of entity <datapath>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating entity <DATAPATH> (architecture <data_path>) from library <work>.
+
+Elaborating entity <IFSTAGE> (architecture <if_stage>) from library <work>.
+
+Elaborating entity <incrementor_4> (architecture <adder>) from library <work>.
+
+Elaborating entity <adder> (architecture <adder>) from library <work>.
+
+Elaborating entity <mux_2to1> (architecture <multiplexer>) from library <work>.
+
+Elaborating entity <regist> (architecture <regist>) from library <work>.
+
+Elaborating entity <DECSTAGE> (architecture <dec_stage>) from library <work>.
+
+Elaborating entity <mux_2to1_5bit> (architecture <multiplexer>) from library <work>.
+
+Elaborating entity <immed_extender> (architecture <extender>) from library <work>.
+
+Elaborating entity <register_file> (architecture <register_file>) from library <work>.
+
+Elaborating entity <decoder_5to32> (architecture <decoder>) from library <work>.
+
+Elaborating entity <mux_32to1> (architecture <multiplexer>) from library <work>.
+
+Elaborating entity <EXSTAGE> (architecture <ex_stage>) from library <work>.
+
+Elaborating entity <ALU> (architecture <alu>) from library <work>.
+WARNING:HDLCompiler:794 - "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/ALU.vhd" Line 61: Statement might not cover all choices ; 'others' clause recommended
+
+Elaborating entity <MEMSTAGE> (architecture <mem_stage>) from library <work>.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <DATAPATH>.
+    Related source file is "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/DATAPATH.vhd".
+    Summary:
+	no macro.
+Unit <DATAPATH> synthesized.
+
+Synthesizing Unit <IFSTAGE>.
+    Related source file is "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/IFSTAGE.vhd".
+WARNING:Xst:647 - Input <PC_Immed<31:30>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Summary:
+	no macro.
+Unit <IFSTAGE> synthesized.
+
+Synthesizing Unit <incrementor_4>.
+    Related source file is "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/incrementor_4.vhd".
+WARNING:Xst:647 - Input <Increm_in<31:31>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 32-bit adder for signal <Increm_out> created at line 38.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+Unit <incrementor_4> synthesized.
+
+Synthesizing Unit <adder>.
+    Related source file is "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/adder.vhd".
+    Found 32-bit adder for signal <Adder_out> created at line 39.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+Unit <adder> synthesized.
+
+Synthesizing Unit <mux_2to1>.
+    Related source file is "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/mux_2to1.vhd".
+    Summary:
+	inferred   1 Multiplexer(s).
+Unit <mux_2to1> synthesized.
+
+Synthesizing Unit <regist>.
+    Related source file is "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/regist.vhd".
+    Found 32-bit register for signal <Dataout>.
+    Summary:
+	inferred  32 D-type flip-flop(s).
+Unit <regist> synthesized.
+
+Synthesizing Unit <DECSTAGE>.
+    Related source file is "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/DECSTAGE.vhd".
+WARNING:Xst:647 - Input <Instr<31:26>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <RF_WrEn> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Summary:
+	no macro.
+Unit <DECSTAGE> synthesized.
+
+Synthesizing Unit <mux_2to1_5bit>.
+    Related source file is "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/mux_2to1_5bit.vhd".
+    Summary:
+	inferred   1 Multiplexer(s).
+Unit <mux_2to1_5bit> synthesized.
+
+Synthesizing Unit <immed_extender>.
+    Related source file is "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/immed_extender.vhd".
+    Found 32-bit 4-to-1 multiplexer for signal <extended> created at line 40.
+    Summary:
+	inferred   1 Multiplexer(s).
+Unit <immed_extender> synthesized.
+
+Synthesizing Unit <register_file>.
+    Related source file is "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/register_file.vhd".
+    Summary:
+	no macro.
+Unit <register_file> synthesized.
+
+Synthesizing Unit <decoder_5to32>.
+    Related source file is "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/decoder_5to32.vhd".
+    Found 32-bit shifter logical left for signal <Aout> created at line 28
+    Summary:
+	inferred   1 Combinational logic shifter(s).
+Unit <decoder_5to32> synthesized.
+
+Synthesizing Unit <mux_32to1>.
+    Related source file is "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/mux_32to1.vhd".
+    Found 32-bit 32-to-1 multiplexer for signal <Dataout> created at line 71.
+    Summary:
+	inferred   1 Multiplexer(s).
+Unit <mux_32to1> synthesized.
+
+Synthesizing Unit <EXSTAGE>.
+    Related source file is "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/EXSTAGE.vhd".
+INFO:Xst:3210 - "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/EXSTAGE.vhd" line 69: Output port <Cout> of the instance <arithmetic_logic_unit> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/EXSTAGE.vhd" line 69: Output port <Ovf> of the instance <arithmetic_logic_unit> is unconnected or connected to loadless signal.
+    Summary:
+	no macro.
+Unit <EXSTAGE> synthesized.
+
+Synthesizing Unit <ALU>.
+    Related source file is "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/ALU.vhd".
+    Found 33-bit adder for signal <GND_51_o_GND_51_o_add_0_OUT> created at line 56.
+    Found 32-bit adder for signal <A[31]_B[31]_add_3_OUT> created at line 62.
+    Found 33-bit subtractor for signal <GND_51_o_GND_51_o_sub_2_OUT<32:0>> created at line 57.
+    Found 32-bit subtractor for signal <GND_51_o_GND_51_o_sub_5_OUT<31:0>> created at line 63.
+    Found 32-bit 12-to-1 multiplexer for signal <tOutput> created at line 61.
+    Summary:
+	inferred   2 Adder/Subtractor(s).
+	inferred  14 Multiplexer(s).
+Unit <ALU> synthesized.
+
+Synthesizing Unit <MEMSTAGE>.
+    Related source file is "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/MEMSTAGE.vhd".
+WARNING:Xst:647 - Input <clk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 32-bit adder for signal <added_1024> created at line 61.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+Unit <MEMSTAGE> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 5
+ 32-bit adder                                          : 3
+ 32-bit addsub                                         : 1
+ 33-bit addsub                                         : 1
+# Registers                                            : 33
+ 32-bit register                                       : 33
+# Multiplexers                                         : 22
+ 32-bit 2-to-1 multiplexer                             : 14
+ 32-bit 32-to-1 multiplexer                            : 2
+ 32-bit 4-to-1 multiplexer                             : 1
+ 33-bit 2-to-1 multiplexer                             : 4
+ 5-bit 2-to-1 multiplexer                              : 1
+# Logic shifters                                       : 1
+ 32-bit shifter logical left                           : 1
+# Xors                                                 : 3
+ 1-bit xor2                                            : 3
+
+=========================================================================
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+WARNING:Xst:1710 - FF/Latch <Dataout_31> (without init value) has a constant value of 0 in block <register_generator[0].registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <Dataout_30> (without init value) has a constant value of 0 in block <register_generator[0].registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <Dataout_29> (without init value) has a constant value of 0 in block <register_generator[0].registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <Dataout_28> (without init value) has a constant value of 0 in block <register_generator[0].registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <Dataout_27> (without init value) has a constant value of 0 in block <register_generator[0].registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <Dataout_26> (without init value) has a constant value of 0 in block <register_generator[0].registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <Dataout_25> (without init value) has a constant value of 0 in block <register_generator[0].registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <Dataout_24> (without init value) has a constant value of 0 in block <register_generator[0].registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <Dataout_23> (without init value) has a constant value of 0 in block <register_generator[0].registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <Dataout_22> (without init value) has a constant value of 0 in block <register_generator[0].registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <Dataout_21> (without init value) has a constant value of 0 in block <register_generator[0].registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <Dataout_20> (without init value) has a constant value of 0 in block <register_generator[0].registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <Dataout_19> (without init value) has a constant value of 0 in block <register_generator[0].registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <Dataout_18> (without init value) has a constant value of 0 in block <register_generator[0].registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <Dataout_17> (without init value) has a constant value of 0 in block <register_generator[0].registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <Dataout_16> (without init value) has a constant value of 0 in block <register_generator[0].registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <Dataout_15> (without init value) has a constant value of 0 in block <register_generator[0].registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <Dataout_14> (without init value) has a constant value of 0 in block <register_generator[0].registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <Dataout_13> (without init value) has a constant value of 0 in block <register_generator[0].registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <Dataout_12> (without init value) has a constant value of 0 in block <register_generator[0].registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <Dataout_11> (without init value) has a constant value of 0 in block <register_generator[0].registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <Dataout_10> (without init value) has a constant value of 0 in block <register_generator[0].registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <Dataout_9> (without init value) has a constant value of 0 in block <register_generator[0].registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <Dataout_8> (without init value) has a constant value of 0 in block <register_generator[0].registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <Dataout_7> (without init value) has a constant value of 0 in block <register_generator[0].registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <Dataout_6> (without init value) has a constant value of 0 in block <register_generator[0].registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <Dataout_5> (without init value) has a constant value of 0 in block <register_generator[0].registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <Dataout_4> (without init value) has a constant value of 0 in block <register_generator[0].registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <Dataout_3> (without init value) has a constant value of 0 in block <register_generator[0].registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <Dataout_2> (without init value) has a constant value of 0 in block <register_generator[0].registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <Dataout_1> (without init value) has a constant value of 0 in block <register_generator[0].registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <Dataout_0> (without init value) has a constant value of 0 in block <register_generator[0].registers>. This FF/Latch will be trimmed during the optimization process.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 5
+ 13-bit adder                                          : 1
+ 32-bit adder                                          : 2
+ 32-bit addsub                                         : 1
+ 33-bit addsub                                         : 1
+# Registers                                            : 1056
+ Flip-Flops                                            : 1056
+# Multiplexers                                         : 22
+ 32-bit 2-to-1 multiplexer                             : 14
+ 32-bit 32-to-1 multiplexer                            : 2
+ 32-bit 4-to-1 multiplexer                             : 1
+ 33-bit 2-to-1 multiplexer                             : 4
+ 5-bit 2-to-1 multiplexer                              : 1
+# Logic shifters                                       : 1
+ 32-bit shifter logical left                           : 1
+# Xors                                                 : 3
+ 1-bit xor2                                            : 3
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <regist> ...
+
+Optimizing unit <DATAPATH> ...
+
+Optimizing unit <register_file> ...
+
+Optimizing unit <ALU> ...
+WARNING:Xst:1710 - FF/Latch <dec_stage/RF/register_generator[0].registers/Dataout_14> (without init value) has a constant value of 0 in block <DATAPATH>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dec_stage/RF/register_generator[0].registers/Dataout_13> (without init value) has a constant value of 0 in block <DATAPATH>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dec_stage/RF/register_generator[0].registers/Dataout_12> (without init value) has a constant value of 0 in block <DATAPATH>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dec_stage/RF/register_generator[0].registers/Dataout_11> (without init value) has a constant value of 0 in block <DATAPATH>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dec_stage/RF/register_generator[0].registers/Dataout_10> (without init value) has a constant value of 0 in block <DATAPATH>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dec_stage/RF/register_generator[0].registers/Dataout_9> (without init value) has a constant value of 0 in block <DATAPATH>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dec_stage/RF/register_generator[0].registers/Dataout_8> (without init value) has a constant value of 0 in block <DATAPATH>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dec_stage/RF/register_generator[0].registers/Dataout_7> (without init value) has a constant value of 0 in block <DATAPATH>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dec_stage/RF/register_generator[0].registers/Dataout_6> (without init value) has a constant value of 0 in block <DATAPATH>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dec_stage/RF/register_generator[0].registers/Dataout_5> (without init value) has a constant value of 0 in block <DATAPATH>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dec_stage/RF/register_generator[0].registers/Dataout_4> (without init value) has a constant value of 0 in block <DATAPATH>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dec_stage/RF/register_generator[0].registers/Dataout_3> (without init value) has a constant value of 0 in block <DATAPATH>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dec_stage/RF/register_generator[0].registers/Dataout_2> (without init value) has a constant value of 0 in block <DATAPATH>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dec_stage/RF/register_generator[0].registers/Dataout_1> (without init value) has a constant value of 0 in block <DATAPATH>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dec_stage/RF/register_generator[0].registers/Dataout_0> (without init value) has a constant value of 0 in block <DATAPATH>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <if_stage/program_counter/Dataout_1> (without init value) has a constant value of 0 in block <DATAPATH>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <if_stage/program_counter/Dataout_0> (without init value) has a constant value of 0 in block <DATAPATH>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dec_stage/RF/register_generator[0].registers/Dataout_31> (without init value) has a constant value of 0 in block <DATAPATH>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dec_stage/RF/register_generator[0].registers/Dataout_30> (without init value) has a constant value of 0 in block <DATAPATH>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dec_stage/RF/register_generator[0].registers/Dataout_29> (without init value) has a constant value of 0 in block <DATAPATH>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dec_stage/RF/register_generator[0].registers/Dataout_28> (without init value) has a constant value of 0 in block <DATAPATH>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dec_stage/RF/register_generator[0].registers/Dataout_27> (without init value) has a constant value of 0 in block <DATAPATH>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dec_stage/RF/register_generator[0].registers/Dataout_26> (without init value) has a constant value of 0 in block <DATAPATH>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dec_stage/RF/register_generator[0].registers/Dataout_25> (without init value) has a constant value of 0 in block <DATAPATH>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dec_stage/RF/register_generator[0].registers/Dataout_24> (without init value) has a constant value of 0 in block <DATAPATH>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dec_stage/RF/register_generator[0].registers/Dataout_23> (without init value) has a constant value of 0 in block <DATAPATH>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dec_stage/RF/register_generator[0].registers/Dataout_22> (without init value) has a constant value of 0 in block <DATAPATH>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dec_stage/RF/register_generator[0].registers/Dataout_21> (without init value) has a constant value of 0 in block <DATAPATH>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dec_stage/RF/register_generator[0].registers/Dataout_20> (without init value) has a constant value of 0 in block <DATAPATH>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dec_stage/RF/register_generator[0].registers/Dataout_19> (without init value) has a constant value of 0 in block <DATAPATH>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dec_stage/RF/register_generator[0].registers/Dataout_18> (without init value) has a constant value of 0 in block <DATAPATH>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dec_stage/RF/register_generator[0].registers/Dataout_17> (without init value) has a constant value of 0 in block <DATAPATH>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dec_stage/RF/register_generator[0].registers/Dataout_16> (without init value) has a constant value of 0 in block <DATAPATH>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <dec_stage/RF/register_generator[0].registers/Dataout_15> (without init value) has a constant value of 0 in block <DATAPATH>. This FF/Latch will be trimmed during the optimization process.
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block DATAPATH, actual ratio is 3.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 1022
+ Flip-Flops                                            : 1022
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : DATAPATH.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 1315
+#      GND                         : 1
+#      INV                         : 1
+#      LUT1                        : 28
+#      LUT2                        : 26
+#      LUT3                        : 52
+#      LUT4                        : 22
+#      LUT5                        : 96
+#      LUT6                        : 850
+#      MUXCY                       : 89
+#      MUXF7                       : 58
+#      VCC                         : 1
+#      XORCY                       : 91
+# FlipFlops/Latches                : 1022
+#      FDRE                        : 1022
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 149
+#      IBUF                        : 72
+#      OBUF                        : 77
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 7a100tcsg324-3 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:            1022  out of  126800     0%  
+ Number of Slice LUTs:                 1075  out of  63400     1%  
+    Number used as Logic:              1075  out of  63400     1%  
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:   1959
+   Number with an unused Flip Flop:     937  out of   1959    47%  
+   Number with an unused LUT:           884  out of   1959    45%  
+   Number of fully used LUT-FF pairs:   138  out of   1959     7%  
+   Number of unique control sets:        32
+
+IO Utilization: 
+ Number of IOs:                         157
+ Number of bonded IOBs:                 150  out of    210    71%  
+
+Specific Feature Utilization:
+ Number of BUFG/BUFGCTRLs:                1  out of     32     3%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+Clk                                | BUFGP                  | 1022  |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -3
+
+   Minimum period: 4.249ns (Maximum Frequency: 235.361MHz)
+   Minimum input arrival time before clock: 4.790ns
+   Maximum output required time after clock: 8.665ns
+   Maximum combinational path delay: 9.207ns
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'Clk'
+  Clock period: 4.249ns (frequency: 235.361MHz)
+  Total number of paths / destination ports: 1695512 / 1022
+-------------------------------------------------------------------------
+Delay:               4.249ns (Levels of Logic = 37)
+  Source:            dec_stage/RF/register_generator[26].registers/Dataout_0 (FF)
+  Destination:       dec_stage/RF/register_generator[31].registers/Dataout_31 (FF)
+  Source Clock:      Clk rising
+  Destination Clock: Clk rising
+
+  Data Path: dec_stage/RF/register_generator[26].registers/Dataout_0 to dec_stage/RF/register_generator[31].registers/Dataout_31
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q             2   0.361   0.561  dec_stage/RF/register_generator[26].registers/Dataout_0 (dec_stage/RF/register_generator[26].registers/Dataout_0)
+     LUT6:I2->O            1   0.097   0.556  dec_stage/RF/mux2/Mmux_Dataout_81 (dec_stage/RF/mux2/Mmux_Dataout_81)
+     LUT6:I2->O            1   0.097   0.000  dec_stage/RF/mux2/Mmux_Dataout_3 (dec_stage/RF/mux2/Mmux_Dataout_3)
+     MUXF7:I1->O           2   0.279   0.383  dec_stage/RF/mux2/Mmux_Dataout_2_f7 (sig_rf_b<0>)
+     LUT6:I4->O            1   0.097   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_lut<0> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_lut<0>)
+     MUXCY:S->O            1   0.353   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<0> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<0>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<1> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<1>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<2> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<2>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<3> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<3>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<4> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<4>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<5> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<5>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<6> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<6>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<7> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<7>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<8> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<8>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<9> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<9>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<10> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<10>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<11> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<11>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<12> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<12>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<13> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<13>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<14> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<14>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<15> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<15>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<16> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<16>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<17> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<17>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<18> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<18>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<19> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<19>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<20> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<20>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<21> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<21>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<22> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<22>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<23> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<23>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<24> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<24>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<25> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<25>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<26> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<26>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<27> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<27>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<28> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<28>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<29> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<29>)
+     MUXCY:CI->O           0   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<30> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<30>)
+     XORCY:CI->O           2   0.370   0.299  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_xor<31> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_split<31>)
+     LUT5:I4->O           31   0.097   0.000  dec_stage/ALU_MEM_mux/Mmux_Dataout251 (dec_stage/RF_datain<31>)
+     FDRE:D                    0.008          dec_stage/RF/register_generator[31].registers/Dataout_31
+    ----------------------------------------
+    Total                      4.249ns (2.449ns logic, 1.800ns route)
+                                       (57.6% logic, 42.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'Clk'
+  Total number of paths / destination ports: 2095799 / 2074
+-------------------------------------------------------------------------
+Offset:              4.790ns (Levels of Logic = 39)
+  Source:            RF_B_sel (PAD)
+  Destination:       dec_stage/RF/register_generator[31].registers/Dataout_31 (FF)
+  Destination Clock: Clk rising
+
+  Data Path: RF_B_sel to dec_stage/RF/register_generator[31].registers/Dataout_31
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             5   0.001   0.530  RF_B_sel_IBUF (RF_B_sel_IBUF)
+     LUT3:I0->O          256   0.097   0.834  dec_stage/Instr_mux/Mmux_Dataout21 (dec_stage/read_register_2<1>)
+     LUT6:I0->O            1   0.097   0.556  dec_stage/RF/mux2/Mmux_Dataout_81 (dec_stage/RF/mux2/Mmux_Dataout_81)
+     LUT6:I2->O            1   0.097   0.000  dec_stage/RF/mux2/Mmux_Dataout_3 (dec_stage/RF/mux2/Mmux_Dataout_3)
+     MUXF7:I1->O           2   0.279   0.383  dec_stage/RF/mux2/Mmux_Dataout_2_f7 (sig_rf_b<0>)
+     LUT6:I4->O            1   0.097   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_lut<0> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_lut<0>)
+     MUXCY:S->O            1   0.353   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<0> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<0>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<1> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<1>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<2> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<2>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<3> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<3>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<4> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<4>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<5> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<5>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<6> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<6>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<7> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<7>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<8> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<8>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<9> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<9>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<10> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<10>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<11> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<11>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<12> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<12>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<13> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<13>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<14> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<14>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<15> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<15>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<16> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<16>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<17> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<17>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<18> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<18>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<19> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<19>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<20> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<20>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<21> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<21>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<22> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<22>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<23> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<23>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<24> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<24>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<25> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<25>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<26> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<26>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<27> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<27>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<28> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<28>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<29> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<29>)
+     MUXCY:CI->O           0   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<30> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<30>)
+     XORCY:CI->O           2   0.370   0.299  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_xor<31> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_split<31>)
+     LUT5:I4->O           31   0.097   0.000  dec_stage/ALU_MEM_mux/Mmux_Dataout251 (dec_stage/RF_datain<31>)
+     FDRE:D                    0.008          dec_stage/RF/register_generator[31].registers/Dataout_31
+    ----------------------------------------
+    Total                      4.790ns (2.186ns logic, 2.604ns route)
+                                       (45.6% logic, 54.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'Clk'
+  Total number of paths / destination ports: 65781 / 74
+-------------------------------------------------------------------------
+Offset:              8.665ns (Levels of Logic = 17)
+  Source:            dec_stage/RF/register_generator[26].registers/Dataout_0 (FF)
+  Destination:       ALU_zero (PAD)
+  Source Clock:      Clk rising
+
+  Data Path: dec_stage/RF/register_generator[26].registers/Dataout_0 to ALU_zero
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q             2   0.361   0.561  dec_stage/RF/register_generator[26].registers/Dataout_0 (dec_stage/RF/register_generator[26].registers/Dataout_0)
+     LUT6:I2->O            1   0.097   0.556  dec_stage/RF/mux2/Mmux_Dataout_81 (dec_stage/RF/mux2/Mmux_Dataout_81)
+     LUT6:I2->O            1   0.097   0.000  dec_stage/RF/mux2/Mmux_Dataout_3 (dec_stage/RF/mux2/Mmux_Dataout_3)
+     MUXF7:I1->O           2   0.279   0.384  dec_stage/RF/mux2/Mmux_Dataout_2_f7 (sig_rf_b<0>)
+     LUT6:I4->O            1   0.097   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_lut<0> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_lut<0>)
+     MUXCY:S->O            1   0.353   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<0> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<0>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<1> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<1>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<2> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<2>)
+     XORCY:CI->O           2   0.370   0.299  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_xor<3> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_split<3>)
+     LUT6:I5->O            1   0.097   0.295  ex_stage/arithmetic_logic_unit/Mmux_tOutput11522 (ex_stage/arithmetic_logic_unit/Mmux_tOutput11521)
+     LUT3:I2->O            2   0.097   0.516  ex_stage/arithmetic_logic_unit/Mmux_tOutput11523 (sig_alu_out<3>)
+     LUT5:I2->O            1   0.097   0.683  ex_stage/arithmetic_logic_unit/Zero<31>1_SW0 (N181)
+     LUT6:I1->O            1   0.097   0.693  ex_stage/arithmetic_logic_unit/Zero<31>1 (ex_stage/arithmetic_logic_unit/Zero<31>)
+     LUT6:I0->O            1   0.097   0.683  ex_stage/arithmetic_logic_unit/Zero<31>2_SW0 (N183)
+     LUT6:I1->O            1   0.097   0.556  ex_stage/arithmetic_logic_unit/Zero<31>2 (ex_stage/arithmetic_logic_unit/Zero<31>1)
+     LUT4:I0->O            1   0.097   0.683  ex_stage/arithmetic_logic_unit/Zero<31>7_SW0 (N187)
+     LUT6:I1->O            1   0.097   0.279  ex_stage/arithmetic_logic_unit/Zero<31>7 (ALU_zero_OBUF)
+     OBUF:I->O                 0.000          ALU_zero_OBUF (ALU_zero)
+    ----------------------------------------
+    Total                      8.665ns (2.476ns logic, 6.189ns route)
+                                       (28.6% logic, 71.4% route)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 80687 / 45
+-------------------------------------------------------------------------
+Delay:               9.207ns (Levels of Logic = 19)
+  Source:            RF_B_sel (PAD)
+  Destination:       ALU_zero (PAD)
+
+  Data Path: RF_B_sel to ALU_zero
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             5   0.001   0.530  RF_B_sel_IBUF (RF_B_sel_IBUF)
+     LUT3:I0->O          256   0.097   0.834  dec_stage/Instr_mux/Mmux_Dataout21 (dec_stage/read_register_2<1>)
+     LUT6:I0->O            1   0.097   0.556  dec_stage/RF/mux2/Mmux_Dataout_81 (dec_stage/RF/mux2/Mmux_Dataout_81)
+     LUT6:I2->O            1   0.097   0.000  dec_stage/RF/mux2/Mmux_Dataout_3 (dec_stage/RF/mux2/Mmux_Dataout_3)
+     MUXF7:I1->O           2   0.279   0.384  dec_stage/RF/mux2/Mmux_Dataout_2_f7 (sig_rf_b<0>)
+     LUT6:I4->O            1   0.097   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_lut<0> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_lut<0>)
+     MUXCY:S->O            1   0.353   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<0> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<0>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<1> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<1>)
+     MUXCY:CI->O           1   0.023   0.000  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<2> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_cy<2>)
+     XORCY:CI->O           2   0.370   0.299  ex_stage/arithmetic_logic_unit/Mmux_tOutput1_rs_xor<3> (ex_stage/arithmetic_logic_unit/Mmux_tOutput1_split<3>)
+     LUT6:I5->O            1   0.097   0.295  ex_stage/arithmetic_logic_unit/Mmux_tOutput11522 (ex_stage/arithmetic_logic_unit/Mmux_tOutput11521)
+     LUT3:I2->O            2   0.097   0.516  ex_stage/arithmetic_logic_unit/Mmux_tOutput11523 (sig_alu_out<3>)
+     LUT5:I2->O            1   0.097   0.683  ex_stage/arithmetic_logic_unit/Zero<31>1_SW0 (N181)
+     LUT6:I1->O            1   0.097   0.693  ex_stage/arithmetic_logic_unit/Zero<31>1 (ex_stage/arithmetic_logic_unit/Zero<31>)
+     LUT6:I0->O            1   0.097   0.683  ex_stage/arithmetic_logic_unit/Zero<31>2_SW0 (N183)
+     LUT6:I1->O            1   0.097   0.556  ex_stage/arithmetic_logic_unit/Zero<31>2 (ex_stage/arithmetic_logic_unit/Zero<31>1)
+     LUT4:I0->O            1   0.097   0.683  ex_stage/arithmetic_logic_unit/Zero<31>7_SW0 (N187)
+     LUT6:I1->O            1   0.097   0.279  ex_stage/arithmetic_logic_unit/Zero<31>7 (ALU_zero_OBUF)
+     OBUF:I->O                 0.000          ALU_zero_OBUF (ALU_zero)
+    ----------------------------------------
+    Total                      9.207ns (2.213ns logic, 6.994ns route)
+                                       (24.0% logic, 76.0% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock Clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+Clk            |    4.249|         |         |         |
+---------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 21.00 secs
+Total CPU time to Xst completion: 11.64 secs
+ 
+--> 
+
+
+Total memory usage is 502432 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   72 (   0 filtered)
+Number of infos    :    3 (   0 filtered)
+

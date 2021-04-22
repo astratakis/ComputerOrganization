@@ -1,0 +1,7 @@
+xst -intstyle ise -ifn "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/ALU.xst" -ofn "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/ALU.syr" 
+xst -intstyle ise -ifn "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/ALU.xst" -ofn "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/ALU.syr" 
+xst -intstyle ise -ifn "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/ALU.xst" -ofn "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/ALU.syr" 
+xst -intstyle ise -ifn "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/ALU.xst" -ofn "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/ALU.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc7a100t-csg324-3 ALU.ngc ALU.ngd  
+map -intstyle ise -p xc7a100t-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -mt off -ir off -pr off -lc off -power off -o ALU_map.ncd ALU.ngd ALU.pcf 
+par -w -intstyle ise -ol high -mt off ALU_map.ncd ALU.ncd ALU.pcf 
