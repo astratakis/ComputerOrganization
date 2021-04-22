@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="/home/carioca/Desktop/comp_arch_help/HPY302_LAB/mux_32to1_tb_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="mux_32to1_tb" />
+            <top_module name="numeric_std" />
+            <top_module name="std_logic_1164" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="34" />
+   <wvobject fp_name="/mux_32to1_tb/ard" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">ard[4:0]</obj_property>
+      <obj_property name="ObjectShortName">ard[4:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#808000</obj_property>
+   </wvobject>
+   <wvobject fp_name="/mux_32to1_tb/datain0" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">datain0[31:0]</obj_property>
+      <obj_property name="ObjectShortName">datain0[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/mux_32to1_tb/datain1" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">datain1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">datain1[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/mux_32to1_tb/datain2" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">datain2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">datain2[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/mux_32to1_tb/datain3" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">datain3[31:0]</obj_property>
+      <obj_property name="ObjectShortName">datain3[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/mux_32to1_tb/datain4" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">datain4[31:0]</obj_property>
+      <obj_property name="ObjectShortName">datain4[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/mux_32to1_tb/datain5" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">datain5[31:0]</obj_property>
+      <obj_property name="ObjectShortName">datain5[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/mux_32to1_tb/datain6" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">datain6[31:0]</obj_property>
+      <obj_property name="ObjectShortName">datain6[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/mux_32to1_tb/datain7" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">datain7[31:0]</obj_property>
+      <obj_property name="ObjectShortName">datain7[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/mux_32to1_tb/datain8" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">datain8[31:0]</obj_property>
+      <obj_property name="ObjectShortName">datain8[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/mux_32to1_tb/datain9" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">datain9[31:0]</obj_property>
+      <obj_property name="ObjectShortName">datain9[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/mux_32to1_tb/datain10" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">datain10[31:0]</obj_property>
+      <obj_property name="ObjectShortName">datain10[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/mux_32to1_tb/datain11" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">datain11[31:0]</obj_property>
+      <obj_property name="ObjectShortName">datain11[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/mux_32to1_tb/datain12" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">datain12[31:0]</obj_property>
+      <obj_property name="ObjectShortName">datain12[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/mux_32to1_tb/datain13" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">datain13[31:0]</obj_property>
+      <obj_property name="ObjectShortName">datain13[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/mux_32to1_tb/datain14" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">datain14[31:0]</obj_property>
+      <obj_property name="ObjectShortName">datain14[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/mux_32to1_tb/datain15" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">datain15[31:0]</obj_property>
+      <obj_property name="ObjectShortName">datain15[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/mux_32to1_tb/datain16" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">datain16[31:0]</obj_property>
+      <obj_property name="ObjectShortName">datain16[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/mux_32to1_tb/datain17" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">datain17[31:0]</obj_property>
+      <obj_property name="ObjectShortName">datain17[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/mux_32to1_tb/datain18" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">datain18[31:0]</obj_property>
+      <obj_property name="ObjectShortName">datain18[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/mux_32to1_tb/datain19" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">datain19[31:0]</obj_property>
+      <obj_property name="ObjectShortName">datain19[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/mux_32to1_tb/datain20" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">datain20[31:0]</obj_property>
+      <obj_property name="ObjectShortName">datain20[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/mux_32to1_tb/datain21" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">datain21[31:0]</obj_property>
+      <obj_property name="ObjectShortName">datain21[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/mux_32to1_tb/datain22" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">datain22[31:0]</obj_property>
+      <obj_property name="ObjectShortName">datain22[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/mux_32to1_tb/datain23" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">datain23[31:0]</obj_property>
+      <obj_property name="ObjectShortName">datain23[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/mux_32to1_tb/datain24" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">datain24[31:0]</obj_property>
+      <obj_property name="ObjectShortName">datain24[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/mux_32to1_tb/datain25" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">datain25[31:0]</obj_property>
+      <obj_property name="ObjectShortName">datain25[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/mux_32to1_tb/datain26" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">datain26[31:0]</obj_property>
+      <obj_property name="ObjectShortName">datain26[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/mux_32to1_tb/datain27" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">datain27[31:0]</obj_property>
+      <obj_property name="ObjectShortName">datain27[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/mux_32to1_tb/datain28" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">datain28[31:0]</obj_property>
+      <obj_property name="ObjectShortName">datain28[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/mux_32to1_tb/datain29" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">datain29[31:0]</obj_property>
+      <obj_property name="ObjectShortName">datain29[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/mux_32to1_tb/datain30" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">datain30[31:0]</obj_property>
+      <obj_property name="ObjectShortName">datain30[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/mux_32to1_tb/datain31" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">datain31[31:0]</obj_property>
+      <obj_property name="ObjectShortName">datain31[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/mux_32to1_tb/dataout" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">dataout[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dataout[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+</wave_config>
