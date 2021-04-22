@@ -1,1 +1,2 @@
-*.c linguist-language=VHDL
+* linguist-vendored
+*.c linguist-detectable=false
