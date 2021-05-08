@@ -1,2 +1,2 @@
 * linguist-vendored
-*.c linguist-detectable=false
+*.VHDL linguist-detectable=false
