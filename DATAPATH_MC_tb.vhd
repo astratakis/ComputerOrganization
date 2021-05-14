@@ -100,29 +100,17 @@
 				MM_WrData => MM_WrData
 			);
 			
-		Clk <= not Clk after 30 ns;
+		Clk <= not Clk after 20 ns;
 
   --  Test Bench Statements
      tb : PROCESS
      BEGIN
 			Reset <= '1';
-			wait for 60 ns; -- wait until global set/reset completes
+			wait for 30 ns; -- wait until global set/reset completes
 			Reset <= '0';
-			
-			
-			------------------
-			-- addi r5, r0, 8 
-			------------------
-			
-			
-			-- addi r5, r0, 8 (IF) 
+					
+			-- IF
 			PC_Sel <= '0';
-			RF_WrData_sel <= '0'; 
-			RF_B_sel <= '0';
-			ImmExt <= "00";             
-			ALU_Bin_sel <= '1';            
-			ALU_func <= "0000";              
-			ByteOp <= '0';
 			Instr <= "11000000000001010000000000001000";
 			
 			PC_LdEn <= '1';
@@ -134,7 +122,11 @@
 			B_reg_we <= '0';
 			ALU_reg_we <= '0';
 			MEM_data_reg_we <= '0';
-			wait for 60 ns;
+			wait for 40 ns;
+
+			------------------
+			-- addi r5, r0, 8 
+			------------------
 			
 			-- addi r5, r0, 8 (DEC read) 
 			PC_Sel <= '0';
@@ -155,7 +147,7 @@
 			B_reg_we <= '1';
 			ALU_reg_we <= '0';
 			MEM_data_reg_we <= '0';
-			wait for 60 ns;
+			wait for 40 ns;
 			
 			-- addi r5, r0, 8 (ΕΧ) 
 			PC_Sel <= '0';
@@ -176,7 +168,7 @@
 			B_reg_we <= '0';
 			ALU_reg_we <= '1';
 			MEM_data_reg_we <= '0';
-			wait for 60 ns;
+			wait for 40 ns;
 			
 			-- addi r5, r0, 8 (DEC write) 
 			PC_Sel <= '0';
@@ -197,20 +189,15 @@
 			B_reg_we <= '0';
 			ALU_reg_we <= '0';
 			MEM_data_reg_we <= '0';
-			wait for 60 ns;
-			
-			----------------------
-			-- ori r3, r0, x"abcd"
-			----------------------
-			
-			
-			-- ori r3, r0, x"abcd" (IF) 
+			wait for 40 ns;
+				
+			-- addi r5, r0, 8 (IF) 
 			PC_Sel <= '0';
 			RF_WrData_sel <= '0'; 
 			RF_B_sel <= '0';
 			ImmExt <= "00";             
 			ALU_Bin_sel <= '1';            
-			ALU_func <= "0011";              
+			ALU_func <= "0000";              
 			ByteOp <= '0';
 			Instr <= "11001100000000111010101111001101";
 			
@@ -223,7 +210,13 @@
 			B_reg_we <= '0';
 			ALU_reg_we <= '0';
 			MEM_data_reg_we <= '0';
-			wait for 60 ns;
+			wait for 40 ns;
+			
+						
+			----------------------
+			-- ori r3, r0, x"abcd"
+			----------------------
+			
 			
 			-- ori r3, r0, x"abcd" (DEC read) 
 			PC_Sel <= '0';
@@ -244,7 +237,7 @@
 			B_reg_we <= '1';
 			ALU_reg_we <= '0';
 			MEM_data_reg_we <= '0';
-			wait for 60 ns;
+			wait for 40 ns;
 			
 			-- ori r3, r0, x"abcd" (ΕΧ) 
 			PC_Sel <= '0';
@@ -265,7 +258,7 @@
 			B_reg_we <= '0';
 			ALU_reg_we <= '1';
 			MEM_data_reg_we <= '0';
-			wait for 60 ns;
+			wait for 40 ns;
 			
 			-- ori r3, r0, x"abcd" (DEC write) 
 			PC_Sel <= '0';
@@ -286,21 +279,17 @@
 			B_reg_we <= '0';
 			ALU_reg_we <= '0';
 			MEM_data_reg_we <= '0';
-			wait for 60 ns;
+			wait for 40 ns;
 			
-			----------------
-			-- sw r3, 4(r0)
-			----------------
-			
-			-- sw r3, 4(r0) (IF)
+			-- ori r3, r0, x"abcd" (IF)
 			PC_Sel <= '0';
-			RF_WrData_sel <= '1'; 
-			RF_B_sel <= '1';
-			ImmExt <= "01";             
+			RF_WrData_sel <= '0'; 
+			RF_B_sel <= '0';
+			ImmExt <= "00";             
 			ALU_Bin_sel <= '1';            
-			ALU_func <= "0000";              
+			ALU_func <= "0011";              
 			ByteOp <= '0';
-			Instr <= "01111100000000110000000000000100";			
+			Instr <= "01111100000000110000000000000100";
 			
 			PC_LdEn <= '1';
 			RF_WrEn <= '0';
@@ -311,7 +300,12 @@
 			B_reg_we <= '0';
 			ALU_reg_we <= '0';
 			MEM_data_reg_we <= '0';
-			wait for 60 ns;
+			wait for 40 ns;
+			
+			----------------
+			-- sw r3, 4(r0)
+			----------------
+			
 			
 			-- sw r3, 4(r0) (DEC read)			
 			PC_Sel <= '0';
@@ -332,7 +326,7 @@
 			B_reg_we <= '1';
 			ALU_reg_we <= '0';
 			MEM_data_reg_we <= '0';
-			wait for 60 ns;
+			wait for 40 ns;
 			
 			-- sw r3, 4(r0) (EX)
 			PC_Sel <= '0';
@@ -353,7 +347,7 @@
 			B_reg_we <= '0';
 			ALU_reg_we <= '1';
 			MEM_data_reg_we <= '0';
-			wait for 60 ns;
+			wait for 40 ns;
 
 			-- sw r3, 4(r0) (MEM store)
 			PC_Sel <= '0';
@@ -374,10 +368,351 @@
 			B_reg_we <= '0';
 			ALU_reg_we <= '0';
 			MEM_data_reg_we <= '0';
-			wait for 60 ns;
-					
+			wait for 40 ns;
+			
+			-- sw r3, 4(r0) (IF)
+			PC_Sel <= '0';
+			RF_WrData_sel <= '1'; 
+			RF_B_sel <= '1';
+			ImmExt <= "01";             
+			ALU_Bin_sel <= '1';            
+			ALU_func <= "0000";              
+			ByteOp <= '0';
+			Instr <= "00001100000100000000000000000100";	
+			
+			PC_LdEn <= '1';
+			RF_WrEn <= '0';
+			MEM_WrEn <= '0';
+			instr_reg_we <= '1';
+			immed_reg_we <= '0';
+			A_reg_we <= '0';
+			B_reg_we <= '0';
+			ALU_reg_we <= '0';
+			MEM_data_reg_we <= '0';
+			wait for 40 ns;
+			
+			
+			---------------
+			-- lb r16, 4(r0)
+			---------------
+		
+			-- lb r16, 4(r0) (DEC read)
+			PC_Sel <= '0';
+			RF_WrData_sel <= '1'; 
+			RF_B_sel <= '0';
+			ImmExt <= "01";             
+			ALU_Bin_sel <= '1';            
+			ALU_func <= "0000";              
+			ByteOp <= '1';
+			MM_RdData <= x"0000abcd";
+			Instr <= "00001100000100000000000000000100";	
+			
+			PC_LdEn <= '0';
+			RF_WrEn <= '0';
+			MEM_WrEn <= '0';
+			instr_reg_we <= '0';
+			immed_reg_we <= '1';
+			A_reg_we <= '1';
+			B_reg_we <= '1';
+			ALU_reg_we <= '0';
+			MEM_data_reg_we <= '0';
+			wait for 40 ns;
+
+			-- lb r16, 4(r0) (EX)
+			PC_Sel <= '0';
+			RF_WrData_sel <= '1'; 
+			RF_B_sel <= '0';
+			ImmExt <= "01";             
+			ALU_Bin_sel <= '1';            
+			ALU_func <= "0000";              
+			ByteOp <= '1';
+			MM_RdData <= x"0000abcd";
+			Instr <= "00001100000100000000000000000100";	
+			
+			PC_LdEn <= '0';
+			RF_WrEn <= '0';
+			MEM_WrEn <= '0';
+			instr_reg_we <= '0';
+			immed_reg_we <= '0';
+			A_reg_we <= '0';
+			B_reg_we <= '0';
+			ALU_reg_we <= '1';
+			MEM_data_reg_we <= '0';
+			wait for 40 ns;
+
+			-- lb r16, 4(r0) (MEM load)
+			PC_Sel <= '0';
+			RF_WrData_sel <= '1'; 
+			RF_B_sel <= '0';
+			ImmExt <= "01";             
+			ALU_Bin_sel <= '1';            
+			ALU_func <= "0000";              
+			ByteOp <= '1';
+			MM_RdData <= x"0000abcd";
+			Instr <= "00001100000100000000000000000100";	
+			
+			PC_LdEn <= '0';
+			RF_WrEn <= '0';
+			MEM_WrEn <= '0';
+			instr_reg_we <= '0';
+			immed_reg_we <= '0';
+			A_reg_we <= '0';
+			B_reg_we <= '0';
+			ALU_reg_we <= '0';
+			MEM_data_reg_we <= '1';
+			wait for 40 ns;
+
+			-- lb r16, 4(r0) (DEC write)
+			PC_Sel <= '0';
+			RF_WrData_sel <= '1'; 
+			RF_B_sel <= '0';
+			ImmExt <= "01";             
+			ALU_Bin_sel <= '1';            
+			ALU_func <= "0000";              
+			ByteOp <= '1';
+			MM_RdData <= x"0000abcd";
+			Instr <= "00001100000100000000000000000100";	
+			
+			PC_LdEn <= '0';
+			RF_WrEn <= '1';
+			MEM_WrEn <= '0';
+			instr_reg_we <= '0';
+			immed_reg_we <= '1';
+			A_reg_we <= '0';
+			B_reg_we <= '0';
+			ALU_reg_we <= '0';
+			MEM_data_reg_we <= '0';
+			wait for 40 ns;
+			
+			-- lb r16, 4(r0) (IF)
+			PC_Sel <= '0';
+			RF_WrData_sel <= '1'; 
+			RF_B_sel <= '0';
+			ImmExt <= "01";             
+			ALU_Bin_sel <= '1';            
+			ALU_func <= "0000";              
+			ByteOp <= '1';
+			MM_RdData <= x"0000abcd";
+			Instr <= "00000100101001010000000000001000";		
+
+			PC_LdEn <= '1';
+			RF_WrEn <= '0';
+			MEM_WrEn <= '0';
+			instr_reg_we <= '1';
+			immed_reg_we <= '0';
+			A_reg_we <= '0';
+			B_reg_we <= '0';
+			ALU_reg_we <= '0';
+			MEM_data_reg_we <= '0';
+			wait for 40 ns;
+			
+			
+			-----------------
+			-- bne r5, r5, 8
+			-----------------
+			
+			-- bne r5, r5, 8 (DEC read)
+			PC_Sel <= '0';
+			RF_WrData_sel <= '1'; 
+			RF_B_sel <= '0';
+			ImmExt <= "11";             
+			ALU_Bin_sel <= '0';            
+			ALU_func <= "0001";              
+			ByteOp <= '0';
+			Instr <= "00000100101001010000000000001000";		
+
+			PC_LdEn <= '0';
+			RF_WrEn <= '0';
+			MEM_WrEn <= '0';
+			instr_reg_we <= '0';
+			immed_reg_we <= '1';
+			A_reg_we <= '1';
+			B_reg_we <= '1';
+			ALU_reg_we <= '0';
+			MEM_data_reg_we <= '0';
+			wait for 40 ns;
+
+			-- bne r5, r5, 8 (EX)
+			PC_Sel <= '0';
+			RF_WrData_sel <= '1'; 
+			RF_B_sel <= '0';
+			ImmExt <= "11";             
+			ALU_Bin_sel <= '0';            
+			ALU_func <= "0001";              
+			ByteOp <= '0';
+			Instr <= "00000100101001010000000000001000";	
+
+			PC_LdEn <= '0';
+			RF_WrEn <= '0';
+			MEM_WrEn <= '0';
+			instr_reg_we <= '0';
+			immed_reg_we <= '0';
+			A_reg_we <= '0';
+			B_reg_we <= '0';
+			ALU_reg_we <= '1';
+			MEM_data_reg_we <= '0';
+			wait for 40 ns;
+			
+			-- bne r5, r0, 8 (IF)
+			PC_Sel <= '0';
+			RF_WrData_sel <= '1'; 
+			RF_B_sel <= '0';
+			ImmExt <= "11";             
+			ALU_Bin_sel <= '0';            
+			ALU_func <= "0001";              
+			ByteOp <= '0';
+			Instr <= "00000100101000000000000000001000";		
+
+			PC_LdEn <= '1';
+			RF_WrEn <= '0';
+			MEM_WrEn <= '0';
+			instr_reg_we <= '1';
+			immed_reg_we <= '0';
+			A_reg_we <= '0';
+			B_reg_we <= '0';
+			ALU_reg_we <= '0';
+			MEM_data_reg_we <= '0';
+			wait for 40 ns;
+			
+			
+			-----------------
+			-- bne r5, r0, 8
+			-----------------
+			
+			-- bne r5, r0, 8 (DEC read)
+			PC_Sel <= '0';
+			RF_WrData_sel <= '0'; 
+			RF_B_sel <= '0';
+			ImmExt <= "11";             
+			ALU_Bin_sel <= '0';            
+			ALU_func <= "0000";              
+			ByteOp <= '0';
+			Instr <= "00000100101000000000000000001000";		
+
+			PC_LdEn <= '0';
+			RF_WrEn <= '0';
+			MEM_WrEn <= '0';
+			instr_reg_we <= '0';
+			immed_reg_we <= '1';
+			A_reg_we <= '1';
+			B_reg_we <= '1';
+			ALU_reg_we <= '0';
+			MEM_data_reg_we <= '0';
+			wait for 40 ns;
+
+			-- bne r5, r0, 8 (EX)
+			PC_Sel <= '0';
+			RF_WrData_sel <= '0'; 
+			RF_B_sel <= '0';
+			ImmExt <= "11";             
+			ALU_Bin_sel <= '0';            
+			ALU_func <= "0000";              
+			ByteOp <= '0';
+			Instr <= "00000100101000000000000000001000";		
+
+			PC_LdEn <= '0';
+			RF_WrEn <= '0';
+			MEM_WrEn <= '0';
+			instr_reg_we <= '0';
+			immed_reg_we <= '0';
+			A_reg_we <= '0';
+			B_reg_we <= '0';
+			ALU_reg_we <= '1';
+			MEM_data_reg_we <= '0';
+			wait for 40 ns;			
+			
+			-- bne r5, r0, 8 (IF)
+			PC_Sel <= '1';
+			RF_WrData_sel <= '0'; 
+			RF_B_sel <= '0';
+			ImmExt <= "11";             
+			ALU_Bin_sel <= '0';            
+			ALU_func <= "0000";              
+			ByteOp <= '0';
+			Instr <= "11111100000000001111111111111110";		
+			
+			PC_LdEn <= '1';
+			RF_WrEn <= '0';
+			MEM_WrEn <= '0';
+			instr_reg_we <= '1';
+			immed_reg_we <= '0';
+			A_reg_we <= '0';
+			B_reg_we <= '0';
+			ALU_reg_we <= '0';
+			MEM_data_reg_we <= '0';
+			wait for 40 ns;
+			
+			
+			--------
+			-- b -2
+			--------
+			
+			-- b -2 (DEC read)
+			PC_Sel <= '0';
+			RF_WrData_sel <= '0'; 
+			RF_B_sel <= '0';
+			ImmExt <= "11";             
+			ALU_Bin_sel <= '0';            
+			ALU_func <= "0000";              
+			ByteOp <= '0';
+			Instr <= "11111100000000001111111111111110";		
+
+			PC_LdEn <= '0';
+			RF_WrEn <= '0';
+			MEM_WrEn <= '0';
+			instr_reg_we <= '0';
+			immed_reg_we <= '1';
+			A_reg_we <= '1';
+			B_reg_we <= '1';
+			ALU_reg_we <= '0';
+			MEM_data_reg_we <= '0';
+			wait for 40 ns;
+
+			-- b -2 (EX)
+			PC_Sel <= '0';
+			RF_WrData_sel <= '0'; 
+			RF_B_sel <= '0';
+			ImmExt <= "11";             
+			ALU_Bin_sel <= '0';            
+			ALU_func <= "0000";              
+			ByteOp <= '0';
+			Instr <= "11111100000000001111111111111110";	
+
+			PC_LdEn <= '0';
+			RF_WrEn <= '0';
+			MEM_WrEn <= '0';
+			instr_reg_we <= '0';
+			immed_reg_we <= '0';
+			A_reg_we <= '0';
+			B_reg_we <= '0';
+			ALU_reg_we <= '1';
+			MEM_data_reg_we <= '0';
+			wait for 40 ns;
+
+			-- b -2 (IF)
+			PC_Sel <= '1';
+			RF_WrData_sel <= '0'; 
+			RF_B_sel <= '0';
+			ImmExt <= "11";             
+			ALU_Bin_sel <= '0';            
+			ALU_func <= "0000";              
+			ByteOp <= '0';
+			Instr <= "11111100000000001111111111111110";	
+
+			PC_LdEn <= '1';
+			RF_WrEn <= '0';
+			MEM_WrEn <= '0';
+			instr_reg_we <= '1';
+			immed_reg_we <= '0';
+			A_reg_we <= '0';
+			B_reg_we <= '0';
+			ALU_reg_we <= '0';
+			MEM_data_reg_we <= '0';
+			wait for 40 ns;			
 			wait; -- will wait forever
+			
      END PROCESS tb;
   --  End Test Bench 
 
   END;
+

@@ -19,8 +19,6 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
-
-
 entity DATAPATH_MC is
 	port(
 		PC_Sel: in std_logic;
