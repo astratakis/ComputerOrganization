@@ -1,2 +1,0 @@
-vhdl isim_temp "mux_32to1.vhd"
-vhdl isim_temp "mux_32to1_tb.vhd"

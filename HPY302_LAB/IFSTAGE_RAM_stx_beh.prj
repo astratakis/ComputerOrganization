@@ -1,7 +1,0 @@
-vhdl isim_temp "regist.vhd"
-vhdl isim_temp "mux_2to1.vhd"
-vhdl isim_temp "incrementor_4.vhd"
-vhdl isim_temp "adder.vhd"
-vhdl isim_temp "RAM.vhd"
-vhdl isim_temp "IFSTAGE.vhd"
-vhdl isim_temp "IFSTAGE_RAM.vhd"

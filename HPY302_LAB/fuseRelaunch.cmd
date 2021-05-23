@@ -1,1 +1,0 @@
--intstyle "ise" -incremental -lib "secureip" -o "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/PROC_SC_tb_isim_beh.exe" -prj "/home/carioca/Desktop/comp_arch_help/HPY302_LAB/PROC_SC_tb_beh.prj" "work.PROC_SC_tb" 

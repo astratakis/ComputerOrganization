@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="/home/carioca/opt/14.7/ISE_DS/HPY303_LAB/PROCESSOR_RAM_PIPELINE_tb_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="numeric_std" />
+            <top_module name="processor_ram_pipeline_tb" />
+            <top_module name="std_logic_1164" />
+            <top_module name="std_logic_arith" />
+            <top_module name="std_logic_textio" />
+            <top_module name="std_logic_unsigned" />
+            <top_module name="textio" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="17" />
+   <wvobject fp_name="/processor_ram_pipeline_tb/clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/processor_ram_pipeline_tb/reset" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/processor_ram_pipeline_tb/uut/processor/datapath/program_counter/data" type="array" db_ref_id="1">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data[31:0]</obj_property>
+      <obj_property name="label">PC</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/processor_ram_pipeline_tb/uut/processor/datapath/dec_stage/RF/\register_generator(3)\/registers/data" type="array" db_ref_id="1">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data[31:0]</obj_property>
+      <obj_property name="label">R3</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/processor_ram_pipeline_tb/uut/processor/datapath/dec_stage/RF/\register_generator(4)\/registers/data" type="array" db_ref_id="1">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data[31:0]</obj_property>
+      <obj_property name="label">R4</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/processor_ram_pipeline_tb/uut/processor/datapath/dec_stage/RF/\register_generator(5)\/registers/data" type="array" db_ref_id="1">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="label">R5</obj_property>
+   </wvobject>
+   <wvobject fp_name="/processor_ram_pipeline_tb/uut/processor/datapath/dec_stage/RF/\register_generator(10)\/registers/data" type="array" db_ref_id="1">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data[31:0]</obj_property>
+      <obj_property name="label">R10</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/processor_ram_pipeline_tb/uut/processor/datapath/dec_stage/RF/\register_generator(16)\/registers/data" type="array" db_ref_id="1">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data[31:0]</obj_property>
+      <obj_property name="label">R16</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/processor_ram_pipeline_tb/uut/processor/control/instr_3_reg/clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/processor_ram_pipeline_tb/uut/processor/control/instr_3_reg/rst" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/processor_ram_pipeline_tb/uut/processor/datapath/program_counter/dataout" type="array" db_ref_id="1">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">dataout[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dataout[31:0]</obj_property>
+      <obj_property name="label">PC</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/processor_ram_pipeline_tb/uut/processor/datapath/instr_in" type="array" db_ref_id="1">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">instr_in[31:0]</obj_property>
+      <obj_property name="ObjectShortName">instr_in[31:0]</obj_property>
+      <obj_property name="label">Instr</obj_property>
+   </wvobject>
+   <wvobject fp_name="vbus2272" type="vbus" db_ref_id="1">
+      <obj_property name="label">RAM[1025]</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <wvobject fp_name="/processor_ram_pipeline_tb/uut/memory/ram[1025]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[1025]</obj_property>
+         <obj_property name="ObjectShortName">ram[1025]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/processor_ram_pipeline_tb/uut/processor/control/a_sel" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">a_sel[1:0]</obj_property>
+      <obj_property name="ObjectShortName">a_sel[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/processor_ram_pipeline_tb/uut/processor/control/b_sel" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">b_sel[1:0]</obj_property>
+      <obj_property name="ObjectShortName">b_sel[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/processor_ram_pipeline_tb/uut/processor/control/if_dec_we" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">if_dec_we</obj_property>
+      <obj_property name="ObjectShortName">if_dec_we</obj_property>
+   </wvobject>
+   <wvobject fp_name="/processor_ram_pipeline_tb/uut/processor/control/dec_ex_we" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">dec_ex_we</obj_property>
+      <obj_property name="ObjectShortName">dec_ex_we</obj_property>
+   </wvobject>
+</wave_config>

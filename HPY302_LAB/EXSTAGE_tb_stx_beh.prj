@@ -1,4 +1,0 @@
-vhdl isim_temp "mux_2to1.vhd"
-vhdl isim_temp "ALU.vhd"
-vhdl isim_temp "EXSTAGE.vhd"
-vhdl isim_temp "EXSTAGE_tb.vhd"
